@@ -1,1 +1,140 @@
-/*# sourceMappingURL=styles.css.map */
+* {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body, html {
+  font-family: "Inter", sans-serif;
+  background: #ffffff;
+}
+
+.login {
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
+
+.img-login {
+  width: 710px;
+  height: 755.48px;
+}
+
+.logo {
+  width: 335.54px;
+  height: 123.02px;
+  margin-top: 50px;
+}
+
+.description-oct {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: #515151;
+}
+
+h6 {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: bolder;
+  font-size: 16px;
+  line-height: 19px;
+  color: #515151;
+}
+
+.btn {
+  width: 422px;
+  height: 56px;
+  background: #0C8BFD;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+.btn-text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.btn:hover {
+  background: #0C8BFD;
+  color: white;
+  border: 2px solid #0c8bfd;
+}
+
+.form-control {
+  width: 422px;
+  height: 41px;
+  background: #DCDCDC;
+  border-radius: 6px;
+}
+
+.form-control:hover {
+  border: 2px solid #0C8BFD;
+}
+
+.form-label {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #717171;
+}
+
+.recovery-text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  color: #393939;
+}
+
+hr {
+  width: 1353px;
+  height: 0px;
+  border: 1px solid #DCDCDC;
+}
+
+.logo-footer {
+  width: 147.71px;
+  height: 53.95px;
+}
+
+.text-footer {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  letter-spacing: 0.02em;
+  color: #515151;
+}
+
+.li-title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 150%;
+  color: #393939;
+}
+
+li {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #515151;
+  list-style: none;
+}/*# sourceMappingURL=styles.css.map */
