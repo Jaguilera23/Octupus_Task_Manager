@@ -64,9 +64,16 @@ h6 {
 }
 
 .btn:hover {
-  background: #0C8BFD;
-  color: white;
+  background: #ffffff;
+  color: #0C8BFD;
   border: 2px solid #0c8bfd;
+  transition: 600ms;
+}
+
+.btn.btn-text:active {
+  background: #ffffff;
+  color: #0C8BFD;
+  border-color: #0c8bfd;
 }
 
 .form-control {
