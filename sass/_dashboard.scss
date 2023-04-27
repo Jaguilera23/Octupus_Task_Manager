@@ -1,0 +1,168 @@
+#body-dash, #html-dash {
+    font-family: "Inter",sans-serif;
+    background: #FFFFFF;
+    height: 100%;
+}
+
+
+
+.active{width: 192px;
+    height: 56px;
+    background: #0C8BFD;
+    border-radius: 6px;
+
+} 
+.nav-link.dashboard-link{font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    }
+
+.add-project{width: 192px;
+    height: 56px;
+    background: #6DB9FE;;
+    border-radius: 6px;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 17px;
+color: #FFFFFF;
+}
+
+.btn-projects-list{width: 192px;
+    background: #F9F9F9;
+    border-radius: 6px;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 12px;
+line-height: 15px;
+color: #717171;
+}
+
+.menu-projects{width: 192px;
+    background: #F9F9F9;
+    border-radius: 6px;
+    li{font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #717171;}
+}
+
+.bg-dash{background-color:#F9F9F9;
+    height: 100vh;
+    
+}
+
+.nav-link{font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #717171;
+}
+
+.card-projects{border: none;
+
+}
+
+.search input{font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.4026px;
+    line-height: 15px;
+    color: #AAAAAA;
+    width: 525px;
+    height: 54px;
+    background: #F1F1F1;
+    border-radius: 33.0735px;
+}
+
+.btn-alert{width: 16.77px;
+    height: 20.5px;
+    background-color: transparent;
+}
+.btn-alert:hover{border: transparent;
+}
+
+.btn-usuario{width: 199px;
+    height: 45.48px;
+    background: transparent;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 600;
+font-size: 12.4026px;
+line-height: 15px;
+color: #515151;
+}
+
+.btn-usuario:hover{border: transparent;
+    background: transparent;
+    color: #515151;
+}
+
+.btn-modal-add{width: 265px;
+    height: 64px;
+    background: #0C8BFD;
+    border-radius: 6px;
+}
+
+.btn-modal-add:hover > .text-start > p {
+    color: #0C8BFD;
+}
+
+
+.add{font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+.add-1{font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.btn-modal-curso{width: 265px;
+    height: 64px;
+    background: #4AD994;
+    border-radius: 6px;
+}
+
+.btn-modal-curso:hover > .text-start > p {
+    color: #4AD994;
+}
+
+.btn-modal-curso:hover{border-color:#4AD994;}
+
+.btn-modal-end{width: 265px;
+    height: 64px;
+    background: #B5B5B5;
+    border-radius: 6px;
+}
+
+.btn-modal-end:hover > .text-start > p {
+    color: #B5B5B5;
+}
+
+.btn-modal-end:hover{border-color:#B5B5B5;}
+
+.btn-modal-block{width: 265px;
+    height: 64px;
+    background: #FF7B5F;
+    border-radius: 6px;
+}
+.btn-modal-block:hover{border-color:#FF7B5F;}
+
+.btn-modal-block:hover > .text-start > p {
+    color: #FF7B5F;
+}
