@@ -146,6 +146,11 @@ li {
   list-style: none;
 }
 
+.ingreso {
+  text-decoration: none;
+  color: inherit;
+}
+
 #body-dash, #html-dash {
   font-family: "Inter", sans-serif;
   background: #FFFFFF;
