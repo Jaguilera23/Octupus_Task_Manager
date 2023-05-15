@@ -1,3 +1,4 @@
+
 //Funcion para validar que el usuario sea un correo electronico
 
 let validationUser = (user) =>{
@@ -13,7 +14,7 @@ let validationUser = (user) =>{
 let correoValido = false;
 let user = prompt(`Ingrese su correo electronico`).toLowerCase();
 
-//Bucle de validacion del usuario, no permite ingresar contraseña hasta que el correo sea valido
+// Bucle de validacion del usuario, no permite ingresar contraseña hasta que el correo sea valido
 while(!correoValido){
     correoValido = validationUser(user);
     if(!correoValido){
@@ -24,7 +25,7 @@ while(!correoValido){
 
 let pass = prompt(`Ingrese una contraseña`);
 
-//bucle de validacion de contraseña
+// bucle de validacion de contraseña
 
 while(pass === '' || pass.length < 8){
     alert(`La contraseña debe tener al menos 8 caracteres`)
@@ -32,5 +33,4 @@ while(pass === '' || pass.length < 8){
 }
 
 alert(`Bienvenido ${user} puede dar click en "Ingresar" `);
-
 
