@@ -52,25 +52,25 @@ descripton:'Asegúrarse de que la landing page se vea y funcione correctamente e
 taskOwner:'jose',
 status:'bloqueada'})
 
-console.log(tareas);
-
-// // Se aplica metodo filter para ubicar todas las tareas segun su status y forEach() para recorrer el nuevo arreglo y dar un mensaje por alert con la tarea correspondiente
-
-// let statusTarea = prompt(`Ingrese el status que desea buscar (en curso, bloqueada, finalizada)`)
 
 
-// let statusFiltro = tareas.filter(item => item.status === statusTarea);
+// Se aplica metodo filter para ubicar todas las tareas segun su status y forEach() para recorrer el nuevo arreglo y dar un mensaje por alert con la tarea correspondiente
 
-// statusFiltro.forEach(item =>{
-//     let mensaje = `
-//     taskName:${item.taskName},
-//     startDate:${item.startDate},
-//     endDate: ${item.endDate},
-//     descripton:${item.descripton},
-//     taskOwner:${item.taskOwner},
-//     status:${item.status},
-//     id:${item.id}
-//     `;
+let statusTarea = prompt(`Ingrese el status que desea buscar (en curso, bloqueada, finalizada)`)
 
-//     alert(mensaje);
-// })
+
+let statusFiltro = tareas.filter(item => item.status === statusTarea);
+
+statusFiltro.forEach(item =>{
+    let mensaje = `
+    taskName:${item.taskName},
+    startDate:${item.startDate},
+    endDate: ${item.endDate},
+    descripton:${item.descripton},
+    taskOwner:${item.taskOwner},
+    status:${item.status},
+    id:${item.id}
+    `;
+
+    alert(mensaje);
+})
