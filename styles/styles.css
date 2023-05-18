@@ -346,4 +346,250 @@ li {
 
 .margin-label {
   margin-top: 8.4%;
+}
+
+.modal-content .modal-body .modal-header {
+  width: 579px;
+  height: 674px;
+  background: #E8E8E8;
+  border-radius: 16px;
+}
+
+.modal-dialog.modal-pers {
+  width: 579px;
+  height: 674px;
+  max-width: none;
+}
+
+.nombre-tarea {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.nombre-tarea::-moz-placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #515151;
+}
+
+.nombre-tarea:-ms-input-placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #515151;
+}
+
+.nombre-tarea::placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #515151;
+}
+
+.fecha {
+  width: 172px;
+  height: 26px;
+  background: #F9F9F9;
+  border-radius: 3px;
+}
+
+.fecha::-moz-placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 10px;
+  color: #717171;
+}
+
+.fecha:-ms-input-placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 10px;
+  color: #717171;
+}
+
+.fecha::placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 10px;
+  color: #717171;
+}
+
+.label-date {
+  width: 172px;
+  height: 26px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #515151;
+}
+
+.btn-modal-side {
+  width: 123px;
+  height: 26px;
+  background: #B5B5B5;
+  border-radius: 3px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #FFFFFF;
+}
+
+.btn.btn-modal-side:hover {
+  color: inherit;
+  border-color: inherit;
+}
+
+.p-status {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #515151;
+}
+
+.d-proyecto {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #515151;
+}
+
+.descripcion {
+  width: 378px;
+  background: #F9F9F9;
+  border-radius: 6px;
+  border: none;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.descripcion::-moz-placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 7px;
+  color: #717171;
+}
+
+.descripcion:-ms-input-placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 7px;
+  color: #717171;
+}
+
+.descripcion::placeholder {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 8px;
+  line-height: 7px;
+  color: #717171;
+}
+
+.form-check-label {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  color: #FFFFFF;
+}
+
+.en-curso {
+  width: 123px;
+  height: 26px;
+  background: #4AD994;
+  border-radius: 3px;
+}
+
+.terminadas {
+  width: 123px;
+  height: 26px;
+  background: #B5B5B5;
+  border-radius: 3px;
+}
+
+.bloqueadas {
+  width: 123px;
+  height: 26px;
+  background: #FF7B5F;
+  border-radius: 3px;
+}
+
+.side-menu {
+  margin-top: 34px;
+}
+
+.btn.cancelar {
+  width: 87.37px;
+  height: 28.39px;
+  background: #CACACA;
+  border-radius: 3.27632px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10.9211px;
+  line-height: 13px;
+  color: #717171;
+}
+
+.btn.guardar {
+  width: 65.53px;
+  height: 28.39px;
+  border-radius: 3.27632px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10.9211px;
+  line-height: 13px;
+  color: #FFFFFF;
+}
+
+.btn.guardar:hover {
+  color: #0c8bfd;
+}
+
+.modal-header {
+  border-bottom: none;
+  margin-left: 10px;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+.modal-content {
+  background: #E8E8E8;
+}
+
+.form-check-label {
+  margin-top: 5%;
 }/*# sourceMappingURL=styles.css.map */

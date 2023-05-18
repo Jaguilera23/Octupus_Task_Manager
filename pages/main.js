@@ -71,6 +71,6 @@ statusFiltro.forEach(item =>{
     status:${item.status},
     id:${item.id}
     `;
-
     alert(mensaje);
 })
+
