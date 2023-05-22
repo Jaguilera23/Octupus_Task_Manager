@@ -1,6 +1,6 @@
 //Login 
 
-let botonLogin = document.getElementById('login');
+let form = document.getElementById('form-login');
 let usuarios = JSON.parse(localStorage.getItem('usuarios'));
 
 //Funcion para recorrer el arreglo y validar email y contrasena
@@ -10,20 +10,19 @@ let login = () => {
     let password = document.getElementById('passLogin').value;
     
 
-    for (const item of usuarios){
-    if (emailLogin === item.email && password === item.password ){
+    const userFound = usuarios.some(user => user.email === emailLogin && user.password === password)
 
-        window.location.href = "../pages/dashboard.html";
-    
+    if(userFound){
+        window.location.href = '../pages/dashboard.html'
     }else{
         alert('Usuario o Contraseña no coinciden')
     }
-}   
 }
 
 
 
-botonLogin.addEventListener('submit', (e) => {
+
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     let emailLogin = document.getElementById('emailLogin').value;
     let userFound = false
@@ -37,8 +36,9 @@ botonLogin.addEventListener('submit', (e) => {
     if (!userFound){
         alert('Usuario no encontrado, debe registrarse')
     }else{
-        login()
+        login();
     }
-}
+    form.reset();
+}  
 )
 

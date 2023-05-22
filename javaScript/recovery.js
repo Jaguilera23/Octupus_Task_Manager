@@ -1,7 +1,7 @@
 //RECUPERACION DE CONTRASEÑA
 
 let usuarios = JSON.parse(localStorage.getItem('usuarios'));
-let botonRecovery = document.getElementById('recovery')
+let formRecovery = document.getElementById('form-recovery')
 
 let recovery = () =>{
     let email = document.getElementById('email-recovery').value;
@@ -24,9 +24,10 @@ let recovery = () =>{
     }
 
 
-
-botonRecovery.addEventListener('click', () => {
+formRecovery.addEventListener('click', (e) => {
+    e.preventDefault()
     recovery()
+    formRecovery.reset();
 })
 
 
