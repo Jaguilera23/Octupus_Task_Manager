@@ -6,21 +6,24 @@ let formRegistro = document.getElementById('form-registro');
 
 
 class Usuario{
-    constructor(email,password){
+    constructor(nombre,email,password){
+        this.nombre = nombre;
         this.email = email;
         this.password = password
     }
 }
 
 let creacionUsuario = () =>{
-    
+
+    let nombre = document.getElementById('nombre').value
     let email = document.getElementById('email-registro').value;
     let password = document.getElementById('contraseña').value;
     let passwordRepeat = document.getElementById('repetir-contraseña').value;
+    
 
     if(password === passwordRepeat){
         if(password.length >= 8){
-            let user = new Usuario (email, password);
+            let user = new Usuario (nombre,email, password);
             usuarios.push(user);
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
         }else{

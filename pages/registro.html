@@ -29,16 +29,20 @@
                     <div class="row ">
                         <form class= "d-flex flex-column align-items-center" id="form-registro">
                             <div class="mb-3">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control " id="nombre" aria-describedby="nombre" required>
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="email" class="form-control " id="email-registro" aria-describedby="emailHelp">
+                                <input type="email" class="form-control " id="email-registro" aria-describedby="emailHelp" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                                <input type="password" class="form-control " id="contraseña">
+                                <input type="password" class="form-control " id="contraseña" required>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPassword1" class="form-label ">Repetir Contraseña</label>
-                                <input type="password" class="form-control" id="repetir-contraseña">
+                                <input type="password" class="form-control" id="repetir-contraseña" required>
                             </div>
                             <button type="submit" class="btn btn-text mt-3" id="registro" >Ingresar</button>
                         </form>
