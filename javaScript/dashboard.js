@@ -1,12 +1,12 @@
 //Clase para crear el objeto de cada tarea 
 class Task{
-    constructor(info){
-        this.taskName = info.taskName;
-        this.startDate = new Date(info.startDate).toLocaleDateString();
-        this.endDate = new Date(info.endDate).toLocaleDateString();
-        this.descripton = info.descripton;
-        this.taskOwner = info.taskOwner; 
-        this.status = info.status;
+    constructor(){
+        this.taskName = document.getElementById('title-task').value;
+        this.startDate = new Date(document.getElementById('datepicker-start').value).toLocaleDateString();
+        this.endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString();
+        this.descripton = document.getElementById('floatingTextarea2').value;
+        // this.taskOwner = .taskOwner; 
+        // this.status = document.getElementById().value;
     }
 }
 
@@ -15,14 +15,25 @@ class Task{
 const tareas = [];
 let id = 1;
 
-let taskCreator = (info) => {
-    let task = new Task (info);
+let taskCreator = () => {
+    let task = new Task ();
     task.id = id;
     id++;
     tareas.push(task)
+    document.getElementById('title-task').value='';
+    document.getElementById('datepicker-start').value='';
+    document.getElementById('datepicker-end').value='';
+    document.getElementById('floatingTextarea2').value='';
 }
 
-//Se usa la funcion para crear tareas ejemplo 
+
+let buttonSave = document.getElementById('guardar');
+
+buttonSave.addEventListener('click', taskCreator);
+
+console.log(tareas);
+
+// Se usa la funcion para crear tareas ejemplo 
 
 taskCreator({taskName:'Diseño de la pagina web',
 startDate:'2023-01-01',

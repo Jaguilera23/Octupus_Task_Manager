@@ -10,41 +10,42 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;700;900&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body>
     <main>
         <div class="container login ">
             <div class="row">
                 <div class="col-7">
-                    <img src="./assets/images/login-img.png" alt="imagen-login" class="img-login">
+                    <img src="../assets/images/login-img.png" alt="imagen-login" class="img-login">
                 </div>
                 <div class="col-5 container">
                     <div class="row justify-content-center">
-                        <img src="./assets/logos/octupus.svg" alt="logo-octupus" class="logo mb-5">
-                    </div>
-                    <div class="row justify-content-center mb-5">
-                        <p class="col-10 text-center description-oct">Programa, gestiona y unifica tus tareas, asigna responsabilidades a compañeros de equipo y lleva tus herramientas de la mejor manera</p>
+                        <img src="../assets/logos/octupus.svg" alt="logo-octupus" class="logo mb-5">
                     </div>
                     <div class="row mb-5">
-                        <h6 class="text-center">Ingresa al task manager de octopus</h6>
+                        <h6 class="text-center">Registro de usuario</h6>
                     </div>
                     <div class="row ">
                         <form class= "d-flex flex-column align-items-center">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Email</label>
-                                <input type="email" class="form-control " id="emailLogin" aria-describedby="emailHelp">
+                                <input type="email" class="form-control " id="email-registro" aria-describedby="emailHelp">
                             </div>
                             <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label ">Contraseña</label>
-                                <input type="password" class="form-control" id="passLogin">
+                                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control " id="contraseña">
                             </div>
-                            <button type="submit" class="btn btn-text mt-3" id="login" >Ingresar</button>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label ">Repetir Contraseña</label>
+                                <input type="password" class="form-control" id="repetir-contraseña">
+                            </div>
+                            <button type="submit" class="btn btn-text mt-3" id="registro" >Ingresar</button>
                         </form>
                     </div>
                     <div class="row mt-4 recovery-text">
-                        <p class="text-center">¿Todavía no tienes cuenta? <a href="./pages/registro.html">Registrate</a></p>
-                        <a href="./pages/recovery.html" class="text-center">Recuperar acceso a mi cuenta</a>
+                        <p class="text-center">¿Ya tienes tu cuenta? <a href="../index.html">ingresar</a></p>
+                        <a href="./recovery.html" class="text-center">Recuperar acceso a mi cuenta</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +59,7 @@
             <div class="row">
                 <div class="col-6 container">
                     <div class="row mb-3">
-                        <a href="#"><img src="./assets/logos/octupus-footer.svg" alt="logo-octupus" class="logo-footer "></a>
+                        <a href="../index.html"><img src="../assets/logos/octupus-footer.svg" alt="logo-octupus" class="logo-footer "></a>
                     </div>
                     <div class="row text-footer">
                         <p class="col-11">Programa y gestiona unifica tus tareas, compañeros de equipo y herramientas de la mejor manera. Sencillo, flexible y potente. Todo lo que necesitas son tableros, listas y tarjetas para poder ver de forma clara quién está haciendo qué y las tareas pendientes.</p>
@@ -104,7 +105,7 @@
             </div>
         </footer> 
     </main>
-    <script src="./javaScript/main.js"></script>
+    <script src="../javaScript/registro.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 </html>
