@@ -1,7 +1,9 @@
 //Login 
 
 let form = document.getElementById('form-login');
-let usuarios = JSON.parse(localStorage.getItem('usuarios'));
+let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+
 
 //Funcion para recorrer el arreglo y validar email y contrasena
 
@@ -17,10 +19,11 @@ let login = () => {
     }else{
         alert('Usuario o Contraseña no coinciden')
     }
+    
 }
 
 
-
+//Evento del formulario de inicio de sesion
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();

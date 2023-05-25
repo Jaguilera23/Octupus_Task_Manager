@@ -1,6 +1,6 @@
 //RECUPERACION DE CONTRASEÑA
-
 let usuarios = JSON.parse(localStorage.getItem('usuarios'));
+
 let formRecovery = document.getElementById('form-recovery')
 
 let recovery = () =>{
@@ -24,9 +24,9 @@ let recovery = () =>{
     }
 
 
-formRecovery.addEventListener('click', (e) => {
-    e.preventDefault()
-    recovery()
+formRecovery.addEventListener('submit', (e) => {
+    e.preventDefault();
+    recovery();
     formRecovery.reset();
 })
 

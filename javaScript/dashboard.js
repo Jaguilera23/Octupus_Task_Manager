@@ -1,10 +1,10 @@
 //Clase para crear el objeto de cada tarea 
 class Task{
-    constructor(){
-        this.taskName = document.getElementById('title-task').value;
-        this.startDate = new Date(document.getElementById('datepicker-start').value).toLocaleDateString();
-        this.endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString();
-        this.descripton = document.getElementById('floatingTextarea2').value;
+    constructor(taskName, startDate, endDate, description){
+        this.taskName = taskName;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.description = description;
         // this.taskOwner = .taskOwner; 
         // this.status = document.getElementById().value;
     }
@@ -12,18 +12,25 @@ class Task{
 
 // Array que almacena las tareas
 
-const tareas = [];
+const tareas = JSON.parse(localStorage.getItem('tareas')) || [];;
 let id = 1;
 
 let taskCreator = () => {
-    let task = new Task ();
+    let taskName = document.getElementById('title-task').value;
+    let startDate = new Date(document.getElementById('datepicker-start').value).toLocaleDateString();
+    let endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString();
+    let description = document.getElementById('floatingTextarea2').value;
+
+    let task = new Task (taskName,startDate,endDate,description);
     task.id = id;
     id++;
     tareas.push(task)
+    localStorage.setItem('tareas', JSON.stringify(tareas))
     document.getElementById('title-task').value='';
     document.getElementById('datepicker-start').value='';
     document.getElementById('datepicker-end').value='';
     document.getElementById('floatingTextarea2').value='';
+    crearAcordeonTarea(task);
 }
 
 
@@ -31,57 +38,80 @@ let buttonSave = document.getElementById('guardar');
 
 buttonSave.addEventListener('click', taskCreator);
 
-console.log(tareas);
 
-// Se usa la funcion para crear tareas ejemplo 
+// Funcion crear card de tareas
 
-taskCreator({taskName:'Diseño de la pagina web',
-startDate:'2023-01-01',
-endDate: '2023-01-15',
-descripton:'Diseña una landing page atractiva y moderna que refleje la identidad de tu marca y cumpla con los objetivos de tu sitio web',
-taskOwner:'jose',
-status:'finalizada'})
+let crearAcordeonTarea = (task) =>{
+    let asignarTarea = document.getElementById('contenedor-acordeon')
+    
+    let collapseId = `collapse-${task.id}`
 
-taskCreator({taskName:'Desarrollo del front-end',
-startDate:'2023-01-16',
-endDate: '2023-01-30',
-descripton:'Codifica la estructura y el diseño de la landing page utilizando HTML, CSS',
-taskOwner:'karla',
-status:'en curso'})
+    let acordeonContent = `
+    <div class="row">
+        <div class="col" id="asignarTarea">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item mb-4">
+                    <h2 class="accordion-header ">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-${task.id}" aria-expanded="true" aria-controls="collapse-${task.id}">
+                        ${task.taskName}
+                        </button>
+                    </h2>
+                    <div id="collapse-${task.id}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <img src="../assets/logos/members.svg" alt="" class="mt-3">
+                                <button type="button" class="btn-edit"><img src="../assets/logos/editar.svg" alt=""></button>
+                            </div>
+                            <h5 class="mt-3 n-tarea-card">${task.description}</h5>
+                            <div class="d-flex flex-row  justify-content-start">
+                                <img src="../assets/logos/create-date.svg" alt="" class="me-2">
+                                <div class="d-flex flex-row align-items-center mt-3">
+                                    <p class="creation-date me-2">Creado: </p>
+                                    <p class="p-date-start">${task.startDate}</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row ">
+                                <img src="../assets/logos/deadline.svg" alt="" class="me-2">
+                                <div  class="d-flex flex-column justify-content-center align-content-center align-items-center">
+                                    <p class="p-deadline mb-0 pt-3">DeadLine</p>
+                                    <p class="p-date-end">${task.endDate}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+    `;
 
-taskCreator({taskName:'Integración de elementos interactivos',
-startDate:'2023-02-02',
-endDate: '2023-02-18',
-descripton:'Agrega funcionalidades interactivas a la landing page, como formularios de contacto que capturan la información del usuario',
-taskOwner:'greg',
-status:'bloqueada'})
+    asignarTarea.innerHTML += acordeonContent;
 
-taskCreator({taskName:'Optimización para dispositivos móviles',
-startDate:'2023-02-22',
-endDate: '2023-03-10',
-descripton:'Asegúrarse de que la landing page se vea y funcione correctamente en dispositivos móviles',
-taskOwner:'jose',
-status:'bloqueada'})
+}
+
+
+
+
 
 
 
 // Se aplica metodo filter para ubicar todas las tareas segun su status y forEach() para recorrer el nuevo arreglo y dar un mensaje por alert con la tarea correspondiente
 
-let statusTarea = prompt(`Ingrese el status que desea buscar (en curso, bloqueada, finalizada)`)
+// let statusTarea = prompt(`Ingrese el status que desea buscar (en curso, bloqueada, finalizada)`)
 
 
-let statusFiltro = tareas.filter(item => item.status === statusTarea);
+// let statusFiltro = tareas.filter(item => item.status === statusTarea);
 
-statusFiltro.forEach(item =>{
-    let mensaje = `
-    taskName:${item.taskName},
-    startDate:${item.startDate},
-    endDate: ${item.endDate},
-    descripton:${item.descripton},
-    taskOwner:${item.taskOwner},
-    status:${item.status},
-    id:${item.id}
-    `;
-    alert(mensaje);
-})
+// statusFiltro.forEach(item =>{
+//     let mensaje = `
+//     taskName:${item.taskName},
+//     startDate:${item.startDate},
+//     endDate: ${item.endDate},
+//     descripton:${item.descripton},
+//     taskOwner:${item.taskOwner},
+//     status:${item.status},
+//     id:${item.id}
+//     `;
+//     alert(mensaje);
+// })
 

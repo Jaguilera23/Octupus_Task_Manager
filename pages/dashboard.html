@@ -82,6 +82,8 @@
                             </div>
                             <img src="../assets/logos/add-task.svg" alt="">
                         </button>
+                        <!--Acordeon de tareas-->
+                        <div class="container ps-0 mt-4" id="contenedor-acordeon"></div>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-pers">
@@ -139,20 +141,26 @@
                                                         <p class="mt-4 p-status ps-0">Status</p>
                                                     </div>
                                                     <div class="row ">
-                                                        <div class="form-check en-curso d-flex justify-content-start r ps-0 mb-2">
-                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <div class="form-check porAsignar d-flex justify-content-start  ps-0 mb-2">
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="porAsignar" id="porAsignar" >
+                                                            <label class="form-check-label " for="flexRadioDefault1">
+                                                                Por asignar
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="enCurso" id="enCurso" >
                                                             <label class="form-check-label " for="flexRadioDefault1">
                                                                 En curso
                                                             </label>
                                                         </div>
                                                         <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
-                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="terminadas" id="terminadas">
                                                             <label class="form-check-label " for="flexRadioDefault2">
                                                                 Terminadas
                                                             </label>
                                                         </div>
                                                         <div class="form-check bloqueadas d-flex justify-content-start  ps-0 mb-2">
-                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="bloqueadas" id="bloqueadas">
                                                             <label class="form-check-label " for="flexRadioDefault2">
                                                                 Bloqueadas
                                                             </label>
@@ -163,7 +171,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cerrar</button>
                                         <button type="button" class="btn guardar" id="guardar">Guardar</button>
                                     </div>
                                 </div>
@@ -178,6 +186,13 @@
                             </div>
                             <img src="../assets/logos/en-curso.svg" alt="">
                         </button>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <!-- <h1>hola mundo en curso</h1> -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col ps-0 pe-0">
                         <button type="button" class="btn btn-modal-end  d-flex justify-content-between align-items-center">
@@ -187,6 +202,13 @@
                             </div>
                             <img src="../assets/logos/terminadas.svg" alt="">
                         </button>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <!-- <h1>hola mundo terminadas</h1> -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="col ps-0 pe-0">
                         <button type="button" class="btn btn-modal-block  d-flex justify-content-between align-items-center">
@@ -196,6 +218,13 @@
                             </div>
                             <img src="../assets/logos/bloqueadas.svg" alt="">
                         </button>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <!-- <h1>hola mundo bloqueadas</h1> -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
