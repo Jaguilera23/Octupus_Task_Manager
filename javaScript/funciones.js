@@ -160,25 +160,25 @@ let crearAcordeonTarea = (task) =>{
                                                             </div>
                                                             <div class="row ">
                                                                 <div class="form-check porAsignar d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="porAsignar" id="porAsignar" >
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar" >
                                                                     <label class="form-check-label " for="flexRadioDefault1">
                                                                         Por asignar
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="enCurso" id="enCurso" >
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso" >
                                                                     <label class="form-check-label " for="flexRadioDefault1">
                                                                         En curso
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="terminadas" id="terminadas">
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas">
                                                                     <label class="form-check-label " for="flexRadioDefault2">
                                                                         Terminadas
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check bloqueadas d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="bloqueadas" id="bloqueadas">
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas">
                                                                     <label class="form-check-label " for="flexRadioDefault2">
                                                                         Bloqueadas
                                                                     </label>
