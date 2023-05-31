@@ -218,10 +218,14 @@ let crearAcordeonTarea = (task) =>{
         </div>
     </div>
     `;
-    
+
     div.innerHTML = acordeonContent
     asignarTarea.appendChild (div)
 }
+
+
+
+
 
 
 
