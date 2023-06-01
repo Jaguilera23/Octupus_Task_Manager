@@ -206,7 +206,7 @@ let crearAcordeonTarea = (tareas) =>{
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="button" class="btn guardar" id="edit-${task.id}">Guardar</button>
+                                                    <button type="button" class="btn guardar" id="edit-${task.id}" >Guardar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -239,13 +239,31 @@ let crearAcordeonTarea = (tareas) =>{
         })
 }
 
-        crearAcordeonTarea(tareas);
+//Se llama a la funcion crearAcordeonTarea de manera global para que se renderice constantemente
+
+crearAcordeonTarea(tareas);
 
 
 
+//Funcion que utiliza find para ubicar la tarea a editar
 
+let editarTarea = (id) => {
 
+    let taskNameEdit = document.getElementById('title-task-edit').value;
+    let startDateEdit = new Date(document.getElementById('datepicker-start-edit').value).toLocaleDateString();
+    let endDateEdit = new Date(document.getElementById('datepicker-end-edit').value).toLocaleDateString();
+    let descriptionEdit = document.getElementById('floatingTextarea2-edit').value;
+    
+    const tareaEncontradaIndex = tareas.findIndex(tarea => tarea.id === id );
 
+    if (tareaEncontradaIndex >= 0){
+        tareas[tareaEncontradaIndex].taskName = taskNameEdit    ;
+        tareas[tareaEncontradaIndex].startDate = startDateEdit;
+        tareas[tareaEncontradaIndex].endDate = endDateEdit;
+        tareas[tareaEncontradaIndex].description=descriptionEdit; 
+    }
+
+}
 
 
 

@@ -14,10 +14,31 @@ class Task{
 
 
 
-
 let buttonSave = document.getElementById('guardar');
 
 buttonSave.addEventListener('click', taskCreator);
+
+
+let buttonEdit = document.getElementById(`edit-${task.id}`);
+
+
+buttonEdit.addEventListener('click', () => {editarTarea(task.id)});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
