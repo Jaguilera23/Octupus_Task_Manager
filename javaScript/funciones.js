@@ -1,3 +1,11 @@
+//Array contenedor de tareas
+const tareas = JSON.parse(localStorage.getItem('tareas')) || [];
+
+//contenedor de acordeon
+let asignarTarea = document.getElementById('contenedor-acordeon')
+
+
+
 //Funcion para recorrer el arreglo y validar email y contrasena del index
 
 let login = () => {
@@ -49,6 +57,9 @@ let creacionUsuario = () => {
 
 //Funcion creador de tareas 
 
+
+let id = 1;
+
 let taskCreator = () => {
 
     let noTask = document.getElementById('no-task');
@@ -56,7 +67,7 @@ let taskCreator = () => {
     let startDate = new Date(document.getElementById('datepicker-start').value).toLocaleDateString();
     let endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString();
     let description = document.getElementById('floatingTextarea2').value;
-    
+
     const createTask = ()=> {
         let task = new Task (taskName,startDate,endDate,description);
         task.id = id;
@@ -67,8 +78,12 @@ let taskCreator = () => {
         document.getElementById('datepicker-start').value='';
         document.getElementById('datepicker-end').value='';
         document.getElementById('floatingTextarea2').value='';
-        crearAcordeonTarea(task);
-        noTask.style.display = 'none'
+        crearAcordeonTarea(tareas);
+
+        //Se verifica con un condicional que el contenedor que tiene notask no sea nulo o undefined y si es asi se le asigna la propiedad display none
+        if (noTask) {
+            noTask.style.display = 'none';
+        }
 
     }
 
@@ -77,154 +92,154 @@ let taskCreator = () => {
 
 // Funcion crear card de tareas
 
-let crearAcordeonTarea = (task) =>{
-    let asignarTarea = document.getElementById('contenedor-acordeon')
-    let collapseId = `collapse-${task.id}`
-    let div = document.createElement('div');
+//Se pasa como parametro el array tareas y se crea un forEach para llamar la funcion crearAcordeonTarea de manera global y asi  se este renderizando lo que hay en el array tareas constantemente
 
-    let acordeonContent = `
-    <div class="row">
-        <div class="col" id="asignarTarea">
-            <div class="accordion" id="accordionExample">
-                <div class="accordion-item mb-4">
-                    <h2 class="accordion-header ">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="true" aria-controls="${collapseId}">
-                        ${task.taskName}
-                        </button>
-                    </h2>
-                    <div id="${collapseId}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <img src="../assets/logos/members.svg" alt="" class="mt-3 me-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn-edit ms-5"  d-flex justify-content-between align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal" id="edit">
-                                    <img src="../assets/logos/editar.svg" alt="">
-                                </button>
-                                <!--Acordeon de tareas-->
-                                <div class="container ps-0 mt-4" id="contenedor-acordeon"></div>
-                                <!-- Modal -->
-                                <div class="modal fade mt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-pers">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Tarea</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <input type="text" placeholder="Nombre de la tarea" class="nombre-tarea mb-3" id="title-task">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row d-flex justify-content-between ">
-                                                        <div class="col">
-                                                            <div class="row ">
-                                                                <div class="col pe-0">
-                                                                    <div class="form-group">
-                                                                        <label for="datepicker" class="label-date ">Fecha de inicio</label>
-                                                                        <input type="text" id="datepicker-start" class="form-control fecha " placeholder="Selecione fecha de inicio">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-5 me-4 ps-0">
-                                                                    <div class="form-group">
-                                                                        <label for="datepicker" class="label-date ">Fecha de fin</label>
-                                                                        <input type="text" id="datepicker-end" class="form-control fecha me-2" placeholder="Selecione fecha de entrega">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mt-4">
-                                                                <div class="col">
-                                                                    <h6 class="d-proyecto"> <img src="../assets/logos/d-proyecto.svg" alt="" class="me-2"> Descripción del proyecto</h6>
-                                                                    <div class="textarea">
-                                                                        <textarea class="descripcion" placeholder="Introduce un texto descriptivo del proyecto" id="floatingTextarea2" style="height: 210px"></textarea>
-                                                                    </div>
-                                                                </div>    
+let crearAcordeonTarea = (tareas) =>{
+    
+    asignarTarea.innerHTML = ""
+    tareas.forEach((task) => {
+        let collapseId = `collapse-${task.id}`
+        let div = document.createElement('div');
+        let acordeonContent = `
+        <div class="row">
+            <div class="col" id="asignarTarea">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item mb-4">
+                        <h2 class="accordion-header ">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="true" aria-controls="${collapseId}">
+                            ${task.taskName}
+                            </button>
+                        </h2>
+                        <div id="${collapseId}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <img src="../assets/logos/members.svg" alt="" class="mt-3 me-5">
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn-edit ms-5"  d-flex justify-content-between align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal-${task.id}" id="edit">
+                                        <img src="../assets/logos/editar.svg" alt="">
+                                    </button>
+                                    <!-- Modal -->
+                                    <div class="modal fade mt-5" id="exampleModal-${task.id}" tabindex="-1" aria-labelledby="exampleModalLabel-edit" aria-hidden="true">
+                                        <div class="modal-dialog modal-pers">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel-edit">Editar Tarea</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <input type="text" placeholder="${task.taskName}" class="nombre-tarea mb-3" id="title-task-edit">
                                                             </div>
                                                         </div>
-                                                        <div class="col-3 side-menu ">
-                                                            <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-around"><img src="../assets/logos/respomsables.svg" alt="" class=""> Responsables</button>
-                                                            </div>
-                                                            <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start"><img src="../assets/logos/etiquetas.svg" alt="" class="ms-2 me-3"> Etiquetas</button>
-                                                            </div>
-                                                            <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start"><img src="../assets/logos/fechas.svg" alt="" class="ms-2 me-3"> Fechas</button>
-                                                            </div>
-                                                            <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
-                                                            </div>
-                                                            <div class="row">
-                                                                <p class="mt-4 p-status ps-0">Status</p>
-                                                            </div>
-                                                            <div class="row ">
-                                                                <div class="form-check porAsignar d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar" >
-                                                                    <label class="form-check-label " for="flexRadioDefault1">
-                                                                        Por asignar
-                                                                    </label>
+                                                        <div class="row d-flex justify-content-between ">
+                                                            <div class="col">
+                                                                <div class="row ">
+                                                                    <div class="col pe-0">
+                                                                        <div class="form-group">
+                                                                            <label for="datepicker" class="label-date ">Fecha de inicio</label>
+                                                                            <input type="text" id="datepicker-start-edit" class="form-control fecha " placeholder="${task.startDate}">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-5 me-4 ps-0">
+                                                                        <div class="form-group">
+                                                                            <label for="datepicker" class="label-date ">Fecha de fin</label>
+                                                                            <input type="text" id="datepicker-end-edit" class="form-control fecha me-2" placeholder="${task.endDate}">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso" >
-                                                                    <label class="form-check-label " for="flexRadioDefault1">
-                                                                        En curso
-                                                                    </label>
+                                                                <div class="row mt-4">
+                                                                    <div class="col">
+                                                                        <h6 class="d-proyecto"> <img src="../assets/logos/d-proyecto.svg" alt="" class="me-2"> Descripción del proyecto</h6>
+                                                                        <div class="textarea">
+                                                                            <textarea class="descripcion" placeholder="${task.description}" id="floatingTextarea2-edit" style="height: 210px"></textarea>
+                                                                        </div>
+                                                                    </div>    
                                                                 </div>
-                                                                <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas">
-                                                                    <label class="form-check-label " for="flexRadioDefault2">
-                                                                        Terminadas
-                                                                    </label>
+                                                            </div>
+                                                            <div class="col-3 side-menu ">
+                                                                <div class="row">
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-around" id="responsables-edit"><img src="../assets/logos/respomsables.svg" alt="" class=""> Responsables</button>
                                                                 </div>
-                                                                <div class="form-check bloqueadas d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas">
-                                                                    <label class="form-check-label " for="flexRadioDefault2">
-                                                                        Bloqueadas
-                                                                    </label>
+                                                                <div class="row">
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="etiquetas-edit"><img src="../assets/logos/etiquetas.svg" alt="" class="ms-2 me-3"> Etiquetas</button>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="fechas-edit"><img src="../assets/logos/fechas.svg" alt="" class="ms-2 me-3"> Fechas</button>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="adjuntos-edit"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <p class="mt-4 p-status ps-0">Status</p>
+                                                                </div>
+                                                                <div class="row ">
+                                                                    <div class="form-check porAsignar d-flex justify-content-start  ps-0 mb-2">
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar-edit" >
+                                                                        <label class="form-check-label " for="flexRadioDefault1">
+                                                                            Por asignar
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso-edit" >
+                                                                        <label class="form-check-label " for="flexRadioDefault1">
+                                                                            En curso
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas-edit">
+                                                                        <label class="form-check-label " for="flexRadioDefault2">
+                                                                            Terminadas
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-check bloqueadas d-flex justify-content-start  ps-0 mb-2">
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas-edit">
+                                                                        <label class="form-check-label " for="flexRadioDefault2">
+                                                                            Bloqueadas
+                                                                        </label>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="button" class="btn guardar" id="guardar">Guardar</button>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
+                                                    <button type="button" class="btn guardar" id="edit-${task.id}">Guardar</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h5 class="mt-3 n-tarea-card">${task.description}</h5>
-                            <div class="d-flex flex-row  justify-content-start">
-                                <img src="../assets/logos/create-date.svg" alt="" class="me-2">
-                                <div class="d-flex flex-row align-items-center mt-3">
-                                    <p class="creation-date me-2">Creado: </p>
-                                    <p class="p-date-start">${task.startDate}</p>
+                                <h5 class="mt-3 n-tarea-card">${task.description}</h5>
+                                <div class="d-flex flex-row  justify-content-start">
+                                    <img src="../assets/logos/create-date.svg" alt="" class="me-2">
+                                    <div class="d-flex flex-row align-items-center mt-3">
+                                        <p class="creation-date me-2">Creado: </p>
+                                        <p class="p-date-start">${task.startDate}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="d-flex flex-row ">
-                                <img src="../assets/logos/deadline.svg" alt="" class="me-2">
-                                <div  class="d-flex flex-column justify-content-center align-content-center align-items-center">
-                                    <p class="p-deadline mb-0 pt-3">DeadLine</p>
-                                    <p class="p-date-end">${task.endDate}</p>
+                                <div class="d-flex flex-row ">
+                                    <img src="../assets/logos/deadline.svg" alt="" class="me-2">
+                                    <div  class="d-flex flex-column justify-content-center align-content-center align-items-center">
+                                        <p class="p-deadline mb-0 pt-3">DeadLine</p>
+                                        <p class="p-date-end">${task.endDate}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div> 
+                    </div> 
+                </div>
             </div>
         </div>
-    </div>
-    `;
-
-    div.innerHTML = acordeonContent
-    asignarTarea.appendChild (div)
+        `;
+        div.innerHTML = acordeonContent
+        asignarTarea.appendChild(div)
+        })
 }
 
-
-
+        crearAcordeonTarea(tareas);
 
 
 

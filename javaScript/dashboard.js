@@ -12,14 +12,14 @@ class Task{
 
 // Array que almacena las tareas
 
-const tareas = JSON.parse(localStorage.getItem('tareas')) || [];;
-let id = 1;
+
+
 
 let buttonSave = document.getElementById('guardar');
 
 buttonSave.addEventListener('click', taskCreator);
 
-let edit = document.getElementById('edit')
+
 
 
 
