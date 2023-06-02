@@ -8,7 +8,7 @@ let asignarTarea = document.getElementById('contenedor-acordeon')
 
 //Funcion para recorrer el arreglo y validar email y contrasena del index
 
-let login = () => {
+const login = () => {
     let emailLogin = document.getElementById('emailLogin').value;
     let password = document.getElementById('passLogin').value;
     
@@ -19,7 +19,7 @@ let login = () => {
 
 //Funcion de recuperacion de contraseña
 
-let recovery = () =>{
+const recovery = () =>{
     let email = document.getElementById('email-recovery').value;
     let usuarioEncontrado = false;
     let passwordEncontrada;
@@ -36,7 +36,7 @@ let recovery = () =>{
 
 //Funcion de Creacion de Usuario
 
-let creacionUsuario = () => {
+const creacionUsuario = () => {
     let nombre = document.getElementById('nombre').value;
     let email = document.getElementById('email-registro').value;
     let password = document.getElementById('contraseña').value;
@@ -60,7 +60,7 @@ let creacionUsuario = () => {
 
 let id = 1;
 
-let taskCreator = () => {
+const taskCreator = () => {
 
     let noTask = document.getElementById('no-task');
     let taskName = document.getElementById('title-task').value;
@@ -68,7 +68,8 @@ let taskCreator = () => {
     let endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString();
     let description = document.getElementById('floatingTextarea2').value;
 
-    const createTask = ()=> {
+
+    if (taskName !== '' && description !== ''){
         let task = new Task (taskName,startDate,endDate,description);
         task.id = id;
         id++;
@@ -81,20 +82,22 @@ let taskCreator = () => {
         crearAcordeonTarea(tareas);
 
         //Se verifica con un condicional que el contenedor que tiene notask no sea nulo o undefined y si es asi se le asigna la propiedad display none
-        if (noTask) {
+        if (tareas.length > 0) {
             noTask.style.display = 'none';
+        } else {
+            noTask.style.display = 'block';
         }
-
+    }else{
+        alert('Debe rellenar los campos para crear una tarea')
     }
 
-    taskName !== '' && startDate !== '' && endDate !== '' ? createTask() : alert('Debe rellenar los campos para crear una tarea');
 }
 
 // Funcion crear card de tareas
 
 //Se pasa como parametro el array tareas y se crea un forEach para llamar la funcion crearAcordeonTarea de manera global y asi  se este renderizando lo que hay en el array tareas constantemente
 
-let crearAcordeonTarea = (tareas) =>{
+const crearAcordeonTarea = (tareas) =>{
     
     asignarTarea.innerHTML = ""
     tareas.forEach((task) => {
@@ -110,7 +113,7 @@ let crearAcordeonTarea = (tareas) =>{
                             ${task.taskName}
                             </button>
                         </h2>
-                        <div id="${collapseId}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div id="${collapseId}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample-${task.id}">
                             <div class="accordion-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <img src="../assets/logos/members.svg" alt="" class="mt-3 me-5">
@@ -130,7 +133,7 @@ let crearAcordeonTarea = (tareas) =>{
                                                     <div class="container">
                                                         <div class="row">
                                                             <div class="col">
-                                                                <input type="text" placeholder="${task.taskName}" class="nombre-tarea mb-3" id="title-task-edit">
+                                                                <input type="text" placeholder="${task.taskName}" class="nombre-tarea mb-3" id="title-task-edit-${task.id}">
                                                             </div>
                                                         </div>
                                                         <div class="row d-flex justify-content-between ">
@@ -139,13 +142,13 @@ let crearAcordeonTarea = (tareas) =>{
                                                                     <div class="col pe-0">
                                                                         <div class="form-group">
                                                                             <label for="datepicker" class="label-date ">Fecha de inicio</label>
-                                                                            <input type="text" id="datepicker-start-edit" class="form-control fecha " placeholder="${task.startDate}">
+                                                                            <input type="text" id="datepicker-start-edit-${task.id}" class="form-control fecha " placeholder="${task.startDate}">
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-5 me-4 ps-0">
                                                                         <div class="form-group">
                                                                             <label for="datepicker" class="label-date ">Fecha de fin</label>
-                                                                            <input type="text" id="datepicker-end-edit" class="form-control fecha me-2" placeholder="${task.endDate}">
+                                                                            <input type="text" id="datepicker-end-edit-${task.id}" class="form-control fecha me-2" placeholder="${task.endDate}">
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -153,48 +156,51 @@ let crearAcordeonTarea = (tareas) =>{
                                                                     <div class="col">
                                                                         <h6 class="d-proyecto"> <img src="../assets/logos/d-proyecto.svg" alt="" class="me-2"> Descripción del proyecto</h6>
                                                                         <div class="textarea">
-                                                                            <textarea class="descripcion" placeholder="${task.description}" id="floatingTextarea2-edit" style="height: 210px"></textarea>
+                                                                            <textarea class="descripcion" placeholder="${task.description}" id="floatingTextarea2-edit-${task.id}" style="height: 210px"></textarea>
                                                                         </div>
                                                                     </div>    
                                                                 </div>
                                                             </div>
                                                             <div class="col-3 side-menu ">
                                                                 <div class="row">
-                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-around" id="responsables-edit"><img src="../assets/logos/respomsables.svg" alt="" class=""> Responsables</button>
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-around" id="responsables-edit-${task.id}"><img src="../assets/logos/respomsables.svg" alt="" class=""> Responsables</button>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="etiquetas-edit"><img src="../assets/logos/etiquetas.svg" alt="" class="ms-2 me-3"> Etiquetas</button>
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="etiquetas-edit-${task.id}"><img src="../assets/logos/etiquetas.svg" alt="" class="ms-2 me-3"> Etiquetas</button>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="fechas-edit"><img src="../assets/logos/fechas.svg" alt="" class="ms-2 me-3"> Fechas</button>
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="fechas-edit-${task.id}"><img src="../assets/logos/fechas.svg" alt="" class="ms-2 me-3"> Fechas</button>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="adjuntos-edit"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="adjuntos-edit-${task.id}"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-edit-${task.id}"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
                                                                 </div>
                                                                 <div class="row">
                                                                     <p class="mt-4 p-status ps-0">Status</p>
                                                                 </div>
                                                                 <div class="row ">
                                                                     <div class="form-check porAsignar d-flex justify-content-start  ps-0 mb-2">
-                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar-edit" >
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar-edit-${task.id}" >
                                                                         <label class="form-check-label " for="flexRadioDefault1">
                                                                             Por asignar
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
-                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso-edit" >
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso-edit-${task.id}" >
                                                                         <label class="form-check-label " for="flexRadioDefault1">
                                                                             En curso
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
-                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas-edit">
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas-edit-${task.id}">
                                                                         <label class="form-check-label " for="flexRadioDefault2">
                                                                             Terminadas
                                                                         </label>
                                                                     </div>
                                                                     <div class="form-check bloqueadas d-flex justify-content-start  ps-0 mb-2">
-                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas-edit">
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas-edit-${task.id}">
                                                                         <label class="form-check-label " for="flexRadioDefault2">
                                                                             Bloqueadas
                                                                         </label>
@@ -234,8 +240,16 @@ let crearAcordeonTarea = (tareas) =>{
             </div>
         </div>
         `;
+        
         div.innerHTML = acordeonContent
         asignarTarea.appendChild(div)
+
+        //Preguntar como crear el boton editar
+
+        let buttonEdit = document.getElementById(`edit-${task.id}`);
+        if (buttonEdit) {
+        buttonEdit.addEventListener('click', () => {editarTarea(task.id)});
+}
         })
 }
 
@@ -247,24 +261,25 @@ crearAcordeonTarea(tareas);
 
 //Funcion que utiliza find para ubicar la tarea a editar
 
-let editarTarea = (id) => {
+const editarTarea = (id) => {
 
-    let taskNameEdit = document.getElementById('title-task-edit').value;
-    let startDateEdit = new Date(document.getElementById('datepicker-start-edit').value).toLocaleDateString();
-    let endDateEdit = new Date(document.getElementById('datepicker-end-edit').value).toLocaleDateString();
-    let descriptionEdit = document.getElementById('floatingTextarea2-edit').value;
+    let taskNameEdit = document.getElementById(`title-task-edit-${id}`).value;
+    let startDateEdit = new Date(document.getElementById(`datepicker-start-edit-${id}`).value).toLocaleDateString();
+    let endDateEdit = new Date(document.getElementById(`datepicker-end-edit-${id}`).value).toLocaleDateString();
+    let descriptionEdit = document.getElementById(`floatingTextarea2-edit-${id}`).value;
     
-    const tareaEncontradaIndex = tareas.findIndex(tarea => tarea.id === id );
+    const tareaEncontrada = tareas.find(tarea => tarea.id === id );
 
-    if (tareaEncontradaIndex >= 0){
-        tareas[tareaEncontradaIndex].taskName = taskNameEdit    ;
-        tareas[tareaEncontradaIndex].startDate = startDateEdit;
-        tareas[tareaEncontradaIndex].endDate = endDateEdit;
-        tareas[tareaEncontradaIndex].description=descriptionEdit; 
+    if (tareaEncontrada){
+        tareaEncontrada.taskName = taskNameEdit    ;
+        tareaEncontrada.startDate = startDateEdit;
+        tareaEncontrada.endDate = endDateEdit;
+        tareaEncontrada.description=descriptionEdit; 
     }
+    localStorage.setItem('tareas', JSON.stringify(tareas));
+    location.reload();
 
 }
-
 
 
 
