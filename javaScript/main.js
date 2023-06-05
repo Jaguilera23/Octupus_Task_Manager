@@ -14,12 +14,23 @@ form.addEventListener('submit', (e) => {
 
     let userFound = usuarios.some(user => user.email === emailLogin) ? true : false;
 
-    !userFound  ? alert('Usuario no encontrado, debe registrarse') : login()
+    !userFound  ?  Swal.fire({
+        title:'Usuario no encontrado, debe registrarse',
+        // icon:'error',
+        width:'20%',
+        customClass:{
+            popup:'alert',
+            title:'title-alert',
+            confirmButton:'btn-alert',
+        },
+        imageUrl:'../assets/logos/octupus-footer.svg',
+        confirmButtonColor:'#0C8BFD',
+        buttonsStyling:'false',
+    }) : login()
     
     form.reset();
 }  
 )
-
 
 
 

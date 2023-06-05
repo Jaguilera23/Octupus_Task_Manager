@@ -309,7 +309,7 @@ color: #FFFFFF;
     font-weight: 500;
     font-size: 10.9211px;
     line-height: 13px;
-    color: #717171;
+    color: #646464;
 }
 
 .btn.guardar{width: 65.53px;
@@ -408,4 +408,25 @@ color: #FFFFFF;}
 
 .no-tareas{margin-top: 20%;
     width: 15%;
+}
+
+.title-alert{ font-size: 18px;
+font-family: 'Inter';
+}
+
+.alert{
+    background: #F9F9F9;
+border-radius: 6px;
+}
+
+.btn-alert{
+    border-radius: 6px;
+    width: 65.53px;
+height: 30px;
+display: flex;
+font-family: 'Inter';
+font-size: 0.9211px;
+line-height: 13px;
+text-align: center;
+
 }

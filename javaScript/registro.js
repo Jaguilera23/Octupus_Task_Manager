@@ -26,7 +26,22 @@ formRegistro.addEventListener('submit', (e) => {
 
     const verificacionUsuario = usuarios.some(user => user.email === email);
 
-    verificacionUsuario ? alert('El usuario ya esta registrado, por favor inicie sesion') : (creacionUsuario(),formRegistro.reset());
+    if(verificacionUsuario){
+        Swal.fire({
+            title:'El usuario ya esta registrado, por favor inicie sesion',
+            // icon:'error',
+            width:'20%',
+            customClass:{
+                popup:'alert',
+                title:'title-alert',
+                confirmButton:'btn-alert',
+            },
+            imageUrl:'../assets/logos/octupus-footer.svg',
+            confirmButtonColor:'#0C8BFD',
+            buttonsStyling:'false',})
+    }else{
+        (creacionUsuario(),formRegistro.reset())
+    };
     
 } )
 

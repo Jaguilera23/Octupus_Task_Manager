@@ -14,7 +14,19 @@ const login = () => {
     
     const userFound = usuarios.some(user => user.email === emailLogin && user.password === password);
     
-    userFound ? window.location.href = '../pages/dashboard.html' : alert('Usuario o Contraseña no coinciden');
+    userFound ? window.location.href = '../pages/dashboard.html' : Swal.fire({
+        title:'Usuario o Contraseña no coinciden',
+        // icon:'error',
+        width:'20%',
+        customClass:{
+            popup:'alert',
+            title:'title-alert',
+            confirmButton:'btn-alert',
+        },
+        imageUrl:'../assets/logos/octupus-footer.svg',
+        confirmButtonColor:'#0C8BFD',
+        buttonsStyling:'false',
+    }) ;
 }
 
 //Funcion de recuperacion de contraseña
@@ -31,8 +43,36 @@ const recovery = () =>{
             break;
         }
     }
-    usuarioEncontrado ? alert(`Su contraseña es ${passwordEncontrada}`) : alert('Usuario no registrado')
-    }
+    if(usuarioEncontrado){
+        Swal.fire({
+            title:`Su contraseña es ${passwordEncontrada}`,
+            // icon:'error',
+            width:'20%',
+            customClass:{
+                popup:'alert',
+                title:'title-alert',
+                confirmButton:'btn-alert',
+            },
+            imageUrl:'../assets/logos/octupus-footer.svg',
+            confirmButtonColor:'#0C8BFD',
+            buttonsStyling:'false',
+        });
+    }else{
+        Swal.fire({
+        title:'Usuario no registrado',
+        // icon:'error',
+        width:'20%',
+        customClass:{
+            popup:'alert',
+            title:'title-alert',
+            confirmButton:'btn-alert',
+        },
+        imageUrl:'../assets/logos/octupus-footer.svg',
+        confirmButtonColor:'#0C8BFD',
+        buttonsStyling:'false',
+        });
+    } 
+}
 
 //Funcion de Creacion de Usuario
 
@@ -48,10 +88,34 @@ const creacionUsuario = () => {
             usuarios.push(user);
             localStorage.setItem('usuarios', JSON.stringify(usuarios));
         } else {
-            alert('La contraseña debe tener al menos 8 caracteres');
+            Swal.fire({
+                title:'La contraseña debe tener al menos 8 caracteres',
+                // icon:'error',
+                width:'20%',
+                customClass:{
+                    popup:'alert',
+                    title:'title-alert',
+                    confirmButton:'btn-alert',
+                },
+                imageUrl:'../assets/logos/octupus-footer.svg',
+                confirmButtonColor:'#0C8BFD',
+                buttonsStyling:'false',
+            });
         }
     } else {
-        alert('Las contraseñas deben ser iguales');
+        Swal.fire({
+            title:'Las contraseñas deben ser iguales',
+            // icon:'error',
+            width:'20%',
+            customClass:{
+                popup:'alert',
+                title:'title-alert',
+                confirmButton:'btn-alert',
+            },
+            imageUrl:'../assets/logos/octupus-footer.svg',
+            confirmButtonColor:'#0C8BFD',
+            buttonsStyling:'false',
+        });
     }
 };
 
@@ -88,7 +152,22 @@ const taskCreator = () => {
             noTask.style.display = 'block';
         }
     }else{
-        alert('Debe rellenar los campos para crear una tarea')
+        Swal.fire({
+            title:'Debe rellenar los campos para crear una tarea',
+            // icon:'error',
+            width:'20%',
+            customClass:{
+                popup:'alert',
+                title:'title-alert',
+                confirmButton:'btn-alert',
+            },
+            imageUrl:'../assets/logos/octupus-footer.svg',
+            confirmButtonColor:'#0C8BFD',
+            buttonsStyling:'false',
+        })
+        
+        
+        
     }
 
 }
@@ -244,13 +323,20 @@ const crearAcordeonTarea = (tareas) =>{
         div.innerHTML = acordeonContent
         asignarTarea.appendChild(div)
 
-        //Preguntar como crear el boton editar
 
         let buttonEdit = document.getElementById(`edit-${task.id}`);
         if (buttonEdit) {
         buttonEdit.addEventListener('click', () => {editarTarea(task.id)});
-}
-        })
+        }
+
+        let buttonDelete = document.getElementById(`delete-edit-${task.id}`)
+        
+        if(buttonDelete){
+            buttonDelete.addEventListener('click', ()=>{eliminar(task.id)})
+        }
+    
+    
+    })
 }
 
 //Se llama a la funcion crearAcordeonTarea de manera global para que se renderice constantemente
@@ -282,7 +368,25 @@ const editarTarea = (id) => {
 }
 
 
+//Funcion borrar tarea
 
+const eliminar = (id) => {
+
+    const index = tareas.findIndex(tarea => tarea.id === id);
+
+    if(index != -1){
+        tareas.splice(index,1)
+    }
+
+    //se actualiza el almacenamiento local
+    localStorage.setItem('tareas', JSON.stringify(tareas)); // Actualizar almacenamiento local
+
+    //se llama a la función para volver a renderizar el acordeón con las tareas actualizadas.
+    crearAcordeonTarea(tareas);
+
+    //se refresca la pagina automaticamente
+    location.reload()
+}
 
 
 
