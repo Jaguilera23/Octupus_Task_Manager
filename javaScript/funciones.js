@@ -16,14 +16,13 @@ const login = () => {
     
     userFound ? window.location.href = 'https://jaguilera23.github.io/Octupus_Task_Manager/pages/dashboard.html' : Swal.fire({
         title:'Usuario o Contraseña no coinciden',
-        // icon:'error',
         width:'20%',
         customClass:{
             popup:'alert',
             title:'title-alert',
             confirmButton:'btn-alert',
         },
-        imageUrl:'../assets/logos/octupus-footer.svg',
+        imageUrl:'../assets/logos/icons8-error-48.png',
         confirmButtonColor:'#0C8BFD',
         buttonsStyling:'false',
     }) ;
@@ -46,28 +45,27 @@ const recovery = () =>{
     if(usuarioEncontrado){
         Swal.fire({
             title:`Su contraseña es ${passwordEncontrada}`,
-            // icon:'error',
+
             width:'20%',
             customClass:{
                 popup:'alert',
                 title:'title-alert',
                 confirmButton:'btn-alert',
             },
-            imageUrl:'../assets/logos/octupus-footer.svg',
+            imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
             buttonsStyling:'false',
         });
     }else{
         Swal.fire({
         title:'Usuario no registrado',
-        // icon:'error',
         width:'20%',
         customClass:{
             popup:'alert',
             title:'title-alert',
             confirmButton:'btn-alert',
         },
-        imageUrl:'../assets/logos/octupus-footer.svg',
+        imageUrl:'../assets/logos/icons8-error-48.png',
         confirmButtonColor:'#0C8BFD',
         buttonsStyling:'false',
         });
@@ -90,14 +88,14 @@ const creacionUsuario = () => {
         } else {
             Swal.fire({
                 title:'La contraseña debe tener al menos 8 caracteres',
-                // icon:'error',
+    
                 width:'20%',
                 customClass:{
                     popup:'alert',
                     title:'title-alert',
                     confirmButton:'btn-alert',
                 },
-                imageUrl:'../assets/logos/octupus-footer.svg',
+                imageUrl:'../assets/logos/icons8-error-48.png',
                 confirmButtonColor:'#0C8BFD',
                 buttonsStyling:'false',
             });
@@ -105,14 +103,13 @@ const creacionUsuario = () => {
     } else {
         Swal.fire({
             title:'Las contraseñas deben ser iguales',
-            // icon:'error',
             width:'20%',
             customClass:{
                 popup:'alert',
                 title:'title-alert',
                 confirmButton:'btn-alert',
             },
-            imageUrl:'../assets/logos/octupus-footer.svg',
+            imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
             buttonsStyling:'false',
         });
@@ -154,14 +151,14 @@ const taskCreator = () => {
     }else{
         Swal.fire({
             title:'Debe rellenar los campos para crear una tarea',
-            // icon:'error',
+
             width:'20%',
             customClass:{
                 popup:'alert',
                 title:'title-alert',
                 confirmButton:'btn-alert',
             },
-            imageUrl:'../assets/logos/octupus-footer.svg',
+            imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
             buttonsStyling:'false',
         })

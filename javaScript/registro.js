@@ -29,14 +29,13 @@ formRegistro.addEventListener('submit', (e) => {
     if(verificacionUsuario){
         Swal.fire({
             title:'El usuario ya esta registrado, por favor inicie sesion',
-            // icon:'error',
             width:'20%',
             customClass:{
                 popup:'alert',
                 title:'title-alert',
                 confirmButton:'btn-alert',
             },
-            imageUrl:'../assets/logos/octupus-footer.svg',
+            imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
             buttonsStyling:'false',})
     }else{
