@@ -14,7 +14,9 @@ const login = () => {
     
     const userFound = usuarios.some(user => user.email === emailLogin && user.password === password);
     
-    userFound ? window.location.href = 'https://jaguilera23.github.io/Octupus_Task_Manager/pages/dashboard.html' : Swal.fire({
+    if(userFound){
+        window.location.href = 'https://jaguilera23.github.io/Octupus_Task_Manager/pages/dashboard.html'
+    } else{ Swal.fire({
         title:'Usuario o Contraseña no coinciden',
         width:'20%',
         customClass:{
@@ -25,7 +27,7 @@ const login = () => {
         imageUrl:'./assets/logos/icons8-error-48.png',
         confirmButtonColor:'#0C8BFD',
         buttonsStyling:'false',
-    }) ;
+    })} ;
 }
 
 //Funcion de recuperacion de contraseña
