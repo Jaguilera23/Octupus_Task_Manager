@@ -14,7 +14,7 @@ const login = () => {
     
     const userFound = usuarios.some(user => user.email === emailLogin && user.password === password);
     
-    userFound ? window.location.href = '../pages/dashboard.html' : Swal.fire({
+    userFound ? window.location.href = 'https://jaguilera23.github.io/Octupus_Task_Manager/pages/dashboard.html' : Swal.fire({
         title:'Usuario o Contraseña no coinciden',
         // icon:'error',
         width:'20%',
