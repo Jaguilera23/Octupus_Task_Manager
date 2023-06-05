@@ -22,7 +22,7 @@ const login = () => {
             title:'title-alert',
             confirmButton:'btn-alert',
         },
-        imageUrl:'../assets/logos/icons8-error-48.png',
+        imageUrl:'/assets/logos/icons8-error-48.png',
         confirmButtonColor:'#0C8BFD',
         buttonsStyling:'false',
     }) ;
