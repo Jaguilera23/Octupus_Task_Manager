@@ -14,7 +14,7 @@ form.addEventListener('submit', (e) => {
 
     let userFound = usuarios.some(user => user.email === emailLogin) ? true : false;
 
-    !userFound  ?  Swal.fire({
+   if(userFound){  Swal.fire({
         title:'Usuario no encontrado, debe registrarse',
         width:'20%',
         customClass:{
@@ -25,7 +25,8 @@ form.addEventListener('submit', (e) => {
         imageUrl:'./assets/logos/icons8-error-48.png',
         confirmButtonColor:'#0C8BFD',
         buttonsStyling:'false',
-    }) : login()
+    })}else{
+        login()};
     
     form.reset();
 }  
