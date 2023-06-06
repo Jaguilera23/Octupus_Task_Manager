@@ -26,7 +26,6 @@ const login = () => {
         },
         imageUrl:'./assets/logos/icons8-error-48.png',
         confirmButtonColor:'#0C8BFD',
-        buttonsStyling:'false',
     })} ;
 }
 
@@ -56,7 +55,7 @@ const recovery = () =>{
             },
             imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
-            buttonsStyling:'false',
+
         });
     }else{
         Swal.fire({
@@ -69,7 +68,6 @@ const recovery = () =>{
         },
         imageUrl:'../assets/logos/icons8-error-48.png',
         confirmButtonColor:'#0C8BFD',
-        buttonsStyling:'false',
         });
     } 
 }
@@ -113,7 +111,7 @@ const creacionUsuario = () => {
             },
             imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
-            buttonsStyling:'false',
+
         });
     }
 };
@@ -162,7 +160,6 @@ const taskCreator = () => {
             },
             imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
-            buttonsStyling:'false',
         })
         
         
@@ -361,8 +358,10 @@ const editarTarea = (id) => {
         tareaEncontrada.endDate = endDateEdit;
         tareaEncontrada.description=descriptionEdit; 
     }
+
     localStorage.setItem('tareas', JSON.stringify(tareas));
     location.reload();
+
 
 }
 

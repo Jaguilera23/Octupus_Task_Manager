@@ -364,10 +364,11 @@ li {
 .nombre-tarea {
   border: none;
   outline: none;
-  background-color: transparent;
   padding: 0;
   font-size: inherit;
   color: inherit;
+  border-radius: 6px;
+  padding-left: 10px;
 }
 
 .nombre-tarea::-moz-placeholder {

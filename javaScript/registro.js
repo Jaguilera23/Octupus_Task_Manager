@@ -37,7 +37,7 @@ formRegistro.addEventListener('submit', (e) => {
             },
             imageUrl:'../assets/logos/icons8-error-48.png',
             confirmButtonColor:'#0C8BFD',
-            buttonsStyling:'false',})
+        })
     }else{
         (creacionUsuario(),formRegistro.reset())
     };
