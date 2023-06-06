@@ -14,7 +14,7 @@ form.addEventListener('submit', (e) => {
 
     let userFound = usuarios.some(user => user.email === emailLogin) ? true : false;
 
-    if(userFound){  Swal.fire({
+    if(!userFound){  Swal.fire({
         title:'Usuario no encontrado, debe registrarse',
         width:'20%',
         customClass:{
