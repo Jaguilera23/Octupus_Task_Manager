@@ -6,11 +6,6 @@ const tareasTerminadas = JSON.parse(localStorage.getItem('tareasTerminadas')) ||
 
 let contenedorTerminadas = document.getElementById('contenedor-terminadas')
 
-//boton status terminadas
-
-let terminadasCheckbox = document.getElementById('terminadas');
-
-terminadasCheckbox.addEventListener('change', statusFunctionTerminadas);
 
 //Funcion que utiliza find para ubicar la tarea Terminada a editar 
 
@@ -236,3 +231,7 @@ const crearAcordeonTareaTerminadas = (tareasTerminadas) => {
 
 ////Se llama a la funcion crearAcordeonTareaTerminadas de manera global para que se renderice constantemente
 crearAcordeonTareaTerminadas(tareasTerminadas);
+
+let terminadasCheckbox = document.getElementById('terminadas');
+
+terminadasCheckbox.addEventListener('change', statusFunctionTerminadas);

@@ -4,11 +4,6 @@ const tareas = JSON.parse(localStorage.getItem('tareas')) || []
 //contenedor de acordeon
 let asignarTarea = document.getElementById('contenedor-acordeon')
 
-//boton save tareas por asignar
-
-let buttonSave = document.getElementById('guardar');
-
-buttonSave.addEventListener('click', taskCreator);
 
 
 // Funcion crear card de tareas

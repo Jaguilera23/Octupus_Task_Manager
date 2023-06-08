@@ -6,11 +6,7 @@ const tareasBloqueadas = JSON.parse(localStorage.getItem('tareasBloqueadas')) ||
 
 let contenedorBloqueadas = document.getElementById('contenedor-bloqueadas')
 
-//boton status bloqueadas
 
-let bloqueadasCheckbox = document.getElementById('bloqueadas'); 
-
-bloqueadasCheckbox.addEventListener('change', statusFunctionBloqueadas);
 
 //Funcion que utiliza find para ubicar la tarea Bloqueadas a editar 
 
@@ -235,3 +231,13 @@ const crearAcordeonTareaBloqueadas = (tareasBloqueadas) => {
 
 ////Se llama a la funcion crearAcordeonTareaBloqueadas de manera global para que se renderice constantemente
 crearAcordeonTareaBloqueadas(tareasBloqueadas);
+
+
+
+let bloqueadasCheckbox = document.getElementById('bloqueadas'); 
+
+bloqueadasCheckbox.addEventListener('change', statusFunctionBloqueadas);
+
+
+
+

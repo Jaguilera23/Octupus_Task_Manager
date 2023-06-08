@@ -7,11 +7,6 @@ const tareasEnCurso = JSON.parse(localStorage.getItem('tareasEnCurso')) || [];
 
 let contenedorEnCurso = document.getElementById('contenedor-en-curso')
 
-//boton status en curso
-
-let enCursoCheckbox = document.getElementById('enCurso');
-
-enCursoCheckbox.addEventListener('change', statusFunctionEnCurso);
 
 //Funcion que utiliza find para ubicar la tarea en curso a editar 
 
@@ -236,3 +231,7 @@ const crearAcordeonTareaEnCurso = (tareasEnCurso) => {
 
 ////Se llama a la funcion crearAcordeonTareaEnCurso de manera global para que se renderice constantemente
 crearAcordeonTareaEnCurso(tareasEnCurso);
+
+let enCursoCheckbox = document.getElementById('enCurso');
+
+enCursoCheckbox.addEventListener('change', statusFunctionEnCurso);

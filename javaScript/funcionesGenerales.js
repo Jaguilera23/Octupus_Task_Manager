@@ -1,3 +1,4 @@
+
 //Funcion para recorrer el arreglo y validar email y contrasena del index
 
 const login = () => {
@@ -199,7 +200,9 @@ const taskCreator = () => {
 
 
 
+let buttonSave = document.getElementById('guardar');
 
+buttonSave.addEventListener('click', taskCreator);
 
 
 
