@@ -18,13 +18,19 @@ let buttonSave = document.getElementById('guardar');
 
 buttonSave.addEventListener('click', taskCreator);
 
+let enCursoCheckbox = document.getElementById('enCurso');
+
+enCursoCheckbox.addEventListener('change', statusFunctionEnCurso);
 
 
 
+let terminadasCheckbox = document.getElementById('terminadas');
 
+terminadasCheckbox.addEventListener('change', statusFunctionTerminadas);
 
+let bloqueadasCheckbox = document.getElementById('bloqueadas'); 
 
-
+bloqueadasCheckbox.addEventListener('change', statusFunctionBloqueadas);
 
 
 

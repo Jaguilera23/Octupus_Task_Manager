@@ -380,15 +380,6 @@ li {
   color: #515151;
 }
 
-.nombre-tarea:-ms-input-placeholder {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  color: #515151;
-}
-
 .nombre-tarea::placeholder {
   font-family: "Inter";
   font-style: normal;
@@ -406,15 +397,6 @@ li {
 }
 
 .fecha::-moz-placeholder {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 8px;
-  line-height: 10px;
-  color: #717171;
-}
-
-.fecha:-ms-input-placeholder {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -489,15 +471,6 @@ li {
 }
 
 .descripcion::-moz-placeholder {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 8px;
-  line-height: 7px;
-  color: #717171;
-}
-
-.descripcion:-ms-input-placeholder {
   font-family: "Inter";
   font-style: normal;
   font-weight: 400;
@@ -615,6 +588,18 @@ li {
 .accordion-button {
   background: #0c8bfd;
   color: #FFFFFF;
+}
+
+.accordion-button.enCursoColor {
+  background: #4AD994;
+}
+
+.accordion-button.terminadasColor {
+  background: #B5B5B5;
+}
+
+.accordion-button.bloqueadasColor {
+  background: #FF7B5F;
 }
 
 .n-tarea-card {

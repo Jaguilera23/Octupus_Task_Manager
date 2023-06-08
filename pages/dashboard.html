@@ -34,7 +34,7 @@
                                 <div class="card card-body menu-projects  card-projects">
                                     <ul >
                                         <li class="mb-3">Proyecto 1</li>
-                                        <li class="mb-3">Proyecto 2</li>
+                                        <li class="mb-3">Proyecto 2</li> data-status="" 
                                         <li class="mb-3">Proyecto 3</li>
                                     </ul>
                                 </div>
@@ -145,25 +145,25 @@
                                                     </div>
                                                     <div class="row ">
                                                         <div class="form-check porAsignar d-flex justify-content-start  ps-0 mb-2">
-                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar" >
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar"  data-status="por-asignar" >
                                                             <label class="form-check-label " for="flexRadioDefault1">
                                                                 Por asignar
                                                             </label>
                                                         </div>
                                                         <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
-                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso" >
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso"  data-status="en-curso" >
                                                             <label class="form-check-label " for="flexRadioDefault1">
                                                                 En curso
                                                             </label>
                                                         </div>
                                                         <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
-                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas">
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas" data-status="terminadas" >
                                                             <label class="form-check-label " for="flexRadioDefault2">
                                                                 Terminadas
                                                             </label>
                                                         </div>
                                                         <div class="form-check bloqueadas d-flex justify-content-start  ps-0 mb-2">
-                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas">
+                                                            <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas" data-status="bloqueadas" >
                                                             <label class="form-check-label " for="flexRadioDefault2">
                                                                 Bloqueadas
                                                             </label>
@@ -189,10 +189,10 @@
                             </div>
                             <img src="../assets/logos/en-curso.svg" alt="">
                         </button>
-                        <div class="container">
+                        <div class="container ps-0 mt-4">
                             <div class="row">
-                                <div class="col">
-                                    <!-- <h1>hola mundo en curso</h1> -->
+                                <div class="col" id="contenedor-en-curso">
+                                
                                 </div>
                             </div>
                         </div>
@@ -205,10 +205,10 @@
                             </div>
                             <img src="../assets/logos/terminadas.svg" alt="">
                         </button>
-                        <div class="container">
+                        <div class="container ps-0 mt-4">
                             <div class="row">
-                                <div class="col">
-                                    <!-- <h1>hola mundo terminadas</h1> -->
+                                <div class="col" id="contenedor-terminadas">
+                                    
                                 </div>
                             </div>
                         </div>
@@ -221,22 +221,22 @@
                             </div>
                             <img src="../assets/logos/bloqueadas.svg" alt="">
                         </button>
-                        <div class="container">
+                        <div class="container ps-0 mt-4">
                             <div class="row">
-                                <div class="col">
-                                    <!-- <h1>hola mundo bloqueadas</h1> -->
+                                <div class="col" id="contenedor-bloqueadas">
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <!-- <div class="container">
                     <div class="row">
                         <div class="col d-flex justify-content-center ">
                             <img src="../assets/logos/no-tareas.svg" alt="" class="no-tareas" id="no-task">
                         </div>
                     </div>
-                </div>
+                </div> -->
                 
             </div>
         </div>
