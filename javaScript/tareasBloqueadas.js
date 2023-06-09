@@ -20,14 +20,25 @@ const editarTareaBloqueadas = (id) => {
     const tareaEncontradaBloqueadas = tareasBloqueadas.find(tarea => tarea.id === id );
 
     if (tareaEncontradaBloqueadas){
-        tareaEncontradaBloqueadas.taskName = taskNameEditBloqueadas ;
-        tareaEncontradaBloqueadas.startDate = startDateEditBloqueadas;
-        tareaEncontradaBloqueadas.endDate = endDateEditBloqueadas;
-        tareaEncontradaBloqueadas.description=descriptionEditBloqueadas; 
+        const originalIdbloqueadas = tareaEncontradaBloqueadas.id;
+        
+        if (taskNameEditBloqueadas !== ''){
+            tareaEncontradaBloqueadas.taskName = taskNameEditBloqueadas;
+        }
+        if (startDateEditBloqueadas !== ''){    
+            tareaEncontradaBloqueadas.startDate = startDateEditBloqueadas;
+        }
+        if (endDateEditBloqueadas !== ''){
+            tareaEncontradaBloqueadas.endDate = endDateEditBloqueadas;
+        }
+        if (descriptionEditBloqueadas !== ''){
+            tareaEncontradaBloqueadas.description = descriptionEditBloqueadas;
+        }
+        tareaEncontradaBloqueadas.id = originalIdbloqueadas;
     }
 
     localStorage.setItem('tareasBloqueadas', JSON.stringify(tareasBloqueadas));
-    location.reload();
+    crearAcordeonTareaBloqueadas(tareasBloqueadas);
 
 
 }
@@ -48,8 +59,7 @@ const eliminarBloqueadas = (id) => {
     //se llama a la función para volver a renderizar el acordeón con las tareas actualizadas.
     crearAcordeonTareaBloqueadas(tareasBloqueadas);
 
-    //se refresca la pagina automaticamente
-    location.reload()
+
 }
 
 // Funcion para crear status de tareas Bloqueadas
@@ -141,7 +151,7 @@ const crearAcordeonTareaBloqueadas = (tareasBloqueadas) => {
                                                                 <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="adjuntos-Bloqueadas-edit-${task.id}"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
                                                             </div>
                                                             <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-Bloqueadas-edit-${task.id}"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
+                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-Bloqueadas-edit-${task.id}" data-bs-dismiss="modal"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
                                                             </div>
                                                             <div class="row">
                                                                 <p class="mt-4 p-status ps-0">Status</p>
@@ -178,7 +188,7 @@ const crearAcordeonTareaBloqueadas = (tareasBloqueadas) => {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="button" class="btn guardar" id="edit-Bloqueadas-${task.id}" >Guardar</button>
+                                                <button type="button" class="btn guardar" id="edit-Bloqueadas-${task.id}" data-bs-dismiss="modal">Guardar</button>
                                             </div>
                                         </div>
                                     </div>

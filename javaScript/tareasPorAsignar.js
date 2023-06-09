@@ -88,7 +88,7 @@ const crearAcordeonTarea = (tareas) =>{
                                                                     <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="adjuntos-edit-${task.id}"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-edit-${task.id}"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
+                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-edit-${task.id}" data-bs-dismiss="modal"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
                                                                 </div>
                                                                 <div class="row">
                                                                     <p class="mt-4 p-status ps-0">Status</p>
@@ -125,7 +125,7 @@ const crearAcordeonTarea = (tareas) =>{
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                                    <button type="button" class="btn guardar" id="edit-${task.id}" >Guardar</button>
+                                                    <button type="button" class="btn guardar" id="edit-${task.id}" data-bs-dismiss="modal">Guardar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -190,15 +190,27 @@ const editarTarea = (id) => {
     
     const tareaEncontrada = tareas.find(tarea => tarea.id === id );
 
-    if (tareaEncontrada){
-        tareaEncontrada.taskName = taskNameEdit    ;
-        tareaEncontrada.startDate = startDateEdit;
-        tareaEncontrada.endDate = endDateEdit;
-        tareaEncontrada.description=descriptionEdit; 
+    if (tareaEncontrada) {
+        const originalId = tareaEncontrada.id; // Almacenar el ID original de la tarea
+
+        if (taskNameEdit !== '') {
+            tareaEncontrada.taskName = taskNameEdit;
+        }
+        if (startDateEdit !== '') {
+            tareaEncontrada.startDate = startDateEdit;
+        }
+        if (endDateEdit !== '') {
+            tareaEncontrada.endDate = endDateEdit;
+        }
+        if (descriptionEdit !== '') {
+            tareaEncontrada.description = descriptionEdit;
+        }
+
+        tareaEncontrada.id = originalId; // Asignar el ID original a la tarea editada
     }
 
     localStorage.setItem('tareas', JSON.stringify(tareas));
-    location.reload();
+    crearAcordeonTarea(tareas);
 
 
 }
@@ -219,6 +231,4 @@ const eliminar = (id) => {
     //se llama a la función para volver a renderizar el acordeón con las tareas actualizadas.
     crearAcordeonTarea(tareas);
 
-    //se refresca la pagina automaticamente
-    location.reload()
 }

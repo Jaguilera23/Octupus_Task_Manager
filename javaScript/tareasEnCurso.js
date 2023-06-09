@@ -20,14 +20,25 @@ const editarTareaEnCurso = (id) => {
     const tareaEncontradaEnCurso = tareasEnCurso.find(tarea => tarea.id === id );
 
     if (tareaEncontradaEnCurso){
-        tareaEncontradaEnCurso.taskName = taskNameEditEnCurso ;
-        tareaEncontradaEnCurso.startDate = startDateEditEnCurso;
-        tareaEncontradaEnCurso.endDate = endDateEditEnCurso;
-        tareaEncontradaEnCurso.description=descriptionEditEnCurso; 
+        const originalIdEnCurso = tareaEncontradaEnCurso.id;
+
+        if(taskNameEditEnCurso !== ''){
+            tareaEncontradaEnCurso.taskName = taskNameEditEnCurso;
+        }
+        if(startDateEditEnCurso !== ''){
+            tareaEncontradaEnCurso.startDate = startDateEditEnCurso;
+        }
+        if(endDateEditEnCurso !== ''){
+            tareaEncontradaEnCurso.endDate = endDateEditEnCurso;
+        }
+        if(descriptionEditEnCurso !== ''){
+            tareaEncontradaEnCurso.description = descriptionEditEnCurso;
+        }
+        tareaEncontradaEnCurso.id = originalIdEnCurso;
     }
 
     localStorage.setItem('tareasEnCurso', JSON.stringify(tareasEnCurso));
-    location.reload();
+    crearAcordeonTareaEnCurso(tareasEnCurso);
 
 
 }
@@ -48,8 +59,6 @@ const eliminarEnCurso = (id) => {
     //se llama a la función para volver a renderizar el acordeón con las tareas actualizadas.
     crearAcordeonTareaEnCurso(tareasEnCurso);
 
-    //se refresca la pagina automaticamente
-    location.reload()
 }
 
 
@@ -141,7 +150,7 @@ const crearAcordeonTareaEnCurso = (tareasEnCurso) => {
                                                                 <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="adjuntos-enCurso-edit-${task.id}"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
                                                             </div>
                                                             <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-enCurso-edit-${task.id}"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
+                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-enCurso-edit-${task.id}" data-bs-dismiss="modal"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
                                                             </div>
                                                             <div class="row">
                                                                 <p class="mt-4 p-status ps-0">Status</p>
@@ -178,7 +187,7 @@ const crearAcordeonTareaEnCurso = (tareasEnCurso) => {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="button" class="btn guardar" id="edit-enCurso-${task.id}" >Guardar</button>
+                                                <button type="button" class="btn guardar" id="edit-enCurso-${task.id}" data-bs-dismiss="modal">Guardar</button>
                                             </div>
                                         </div>
                                     </div>

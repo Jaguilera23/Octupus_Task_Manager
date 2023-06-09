@@ -19,14 +19,25 @@ const editarTareaTerminadas = (id) => {
     const tareaEncontradaTerminadas = tareasTerminadas.find(tarea => tarea.id === id );
 
     if (tareaEncontradaTerminadas){
-        tareaEncontradaTerminadas.taskName = taskNameEditTerminadas ;
-        tareaEncontradaTerminadas.startDate = startDateEditTerminadas;
-        tareaEncontradaTerminadas.endDate = endDateEditTerminadas;
-        tareaEncontradaTerminadas.description=descriptionEditTerminadas; 
+        const originalIdTerminadas = tareaEncontradaTerminadas.id;
+
+        if (taskNameEditTerminadas !== ''){
+            tareaEncontradaTerminadas.taskName = taskNameEditTerminadas;
+        }
+        if (startDateEditTerminadas !== ''){
+            tareaEncontradaTerminadas.startDate = startDateEditTerminadas;
+        }
+        if (endDateEditTerminadas !== ''){
+            tareaEncontradaTerminadas.endDate = endDateEditTerminadas;
+        }
+        if (descriptionEditTerminadas !== ''){
+            tareaEncontradaTerminadas.description = descriptionEditTerminadas;
+        }
+        tareaEncontradaTerminadas.id = originalIdTerminadas;
     }
 
     localStorage.setItem('tareasTerminadas', JSON.stringify(tareasTerminadas));
-    location.reload();
+    crearAcordeonTareaTerminadas(tareasTerminadas);
 
 
 }
@@ -47,8 +58,7 @@ const eliminarTerminadas = (id) => {
     //se llama a la función para volver a renderizar el acordeón con las tareas actualizadas.
     crearAcordeonTareaTerminadas(tareasTerminadas);
 
-    //se refresca la pagina automaticamente
-    location.reload()
+
 }
 
 
@@ -141,7 +151,7 @@ const crearAcordeonTareaTerminadas = (tareasTerminadas) => {
                                                                 <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="adjuntos-Terminadas-edit-${task.id}"><img src="../assets/logos/adjuntos.svg" alt="" class="ms-2 me-3"> Adjuntos</button>
                                                             </div>
                                                             <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-Terminadas-edit-${task.id}"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
+                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="delete-Terminadas-edit-${task.id}" data-bs-dismiss="modal"><img src="../assets/logos/delete.svg" alt="" class="ms-2 me-3"> Eliminar</button>
                                                             </div>
                                                             <div class="row">
                                                                 <p class="mt-4 p-status ps-0">Status</p>
@@ -178,7 +188,7 @@ const crearAcordeonTareaTerminadas = (tareasTerminadas) => {
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn cancelar" data-bs-dismiss="modal">Cancelar</button>
-                                                <button type="button" class="btn guardar" id="edit-Terminadas-${task.id}" >Guardar</button>
+                                                <button type="button" class="btn guardar" data-bs-dismiss="modal" id="edit-Terminadas-${task.id}" >Guardar</button>
                                             </div>
                                         </div>
                                     </div>

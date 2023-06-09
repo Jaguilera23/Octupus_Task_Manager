@@ -55,12 +55,12 @@ const taskCreator = () => {
             crearAcordeonTarea(tareas);
         }
 
-        //Se verifica con un condicional que el contenedor que tiene notask no sea nulo o undefined y si es asi se le asigna la propiedad display none
-        // if (tareas.length > 0) {
-        //     noTask.style.display = 'none';
-        // } else {
-        //     noTask.style.display = 'block';
-        // }
+        // Se verifica con un condicional que el contenedor que tiene notask no sea nulo o undefined y si es asi se le asigna la propiedad display none
+        if (tareas.length > 0) {
+            noTask.style.display = 'none';
+        } else {
+            noTask.style.display = 'block';
+        }
         
     }else{
         Swal.fire({
@@ -90,7 +90,6 @@ const taskCreator = () => {
 let buttonSave = document.getElementById('guardar');
 
 buttonSave.addEventListener('click', taskCreator);
-
 
 
 
