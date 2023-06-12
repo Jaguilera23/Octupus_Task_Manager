@@ -16,7 +16,18 @@ const editarTareaBloqueadas = (id) => {
     let startDateEditBloqueadas = new Date(document.getElementById(`datepicker-start-Bloqueadas-edit-${id}`).value).toLocaleDateString();
     let endDateEditBloqueadas = new Date(document.getElementById(`datepicker-end-Bloqueadas-edit-${id}`).value).toLocaleDateString();
     let descriptionEditBloqueadas = document.getElementById(`floatingTextarea2-Bloqueadas-edit-${id}`).value;
-    
+
+    //checkbox status
+        let porAsignarBloqueadasEditCheckbox = document.getElementById(`porAsignar-Bloqueadas-edit-${id}`);
+        let enCursoBloqueadasEditCheckbox = document.getElementById(`enCurso-Bloqueadas-edit-${id}`);
+        let terminadasBloqueadasEditCheckbox = document.getElementById(`terminadas-Bloqueadas-edit-${id}`);
+
+        enCursoBloqueadasEditCheckbox.addEventListener('change', statusFunctionEnCurso);
+        terminadasBloqueadasEditCheckbox.addEventListener('change', statusFunctionTerminadas);
+        porAsignarBloqueadasEditCheckbox.addEventListener('change', statusFunctionPorAsignar);
+
+        
+
     const tareaEncontradaBloqueadas = tareasBloqueadas.find(tarea => tarea.id === id );
 
     if (tareaEncontradaBloqueadas){
@@ -36,6 +47,47 @@ const editarTareaBloqueadas = (id) => {
         }
         tareaEncontradaBloqueadas.id = originalIdbloqueadas;
     }
+
+    if (enCursoBloqueadasEditCheckbox.checked){
+        const index = tareasBloqueadas.findIndex(tarea => tarea.id === id);
+        const originalIdbloqueadas = tareasBloqueadas[index].id;
+        if (index != -1){
+            tareasBloqueadas.splice(index,1)
+        }
+        tareaEncontradaBloqueadas.id = originalIdbloqueadas;
+        tareasEnCurso.push(tareaEncontradaBloqueadas);
+        localStorage.setItem('tareasEnCurso', JSON.stringify(tareasEnCurso));
+        crearAcordeonTareaEnCurso(tareasEnCurso);
+    }
+
+    if (terminadasBloqueadasEditCheckbox.checked){
+        const index = tareasBloqueadas.findIndex(tarea => tarea.id === id);
+        const originalIdbloqueadas = tareasBloqueadas[index].id;
+        if (index != -1){
+            tareasBloqueadas.splice(index,1)
+        }
+        tareaEncontradaBloqueadas.id = originalIdbloqueadas;
+        tareasTerminadas.push(tareaEncontradaBloqueadas);
+        localStorage.setItem('tareasTerminadas', JSON.stringify(tareasTerminadas));
+        crearAcordeonTareaTerminadas(tareasTerminadas);
+    }
+
+    if (porAsignarBloqueadasEditCheckbox.checked){
+        const index = tareasBloqueadas.findIndex(tarea => tarea.id === id);
+        const originalIdbloqueadas = tareasBloqueadas[index].id;
+        if (index != -1){
+            tareasBloqueadas.splice(index,1)
+        }
+        tareaEncontradaBloqueadas.id = originalIdbloqueadas;
+        tareas.push(tareaEncontradaBloqueadas);
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+        crearAcordeonTarea(tareas);
+    }
+
+
+
+
+
 
     localStorage.setItem('tareasBloqueadas', JSON.stringify(tareasBloqueadas));
     crearAcordeonTareaBloqueadas(tareasBloqueadas);
@@ -164,19 +216,19 @@ const crearAcordeonTareaBloqueadas = (tareasBloqueadas) => {
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="Bloqueadas-Bloqueadas-edit-${task.id}" >
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso-Bloqueadas-edit-${task.id}" >
                                                                     <label class="form-check-label " for="flexRadioDefault1">
                                                                         En curso
                                                                     </label>
                                                                 </div>
-                                                                <div class="form-check Bloqueadas d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="Bloqueadas-Bloqueadas-edit-${task.id}">
+                                                                <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
+                                                                    <input class="form-check-input  margin me-2 ms-1 " type="radio" name="status" id="terminadas-Bloqueadas-edit-${task.id}">
                                                                     <label class="form-check-label " for="flexRadioDefault2">
-                                                                        Bloqueadas
+                                                                        Terminadas
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check bloqueadas d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas-Bloqueadas-edit-${task.id}">
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="bloqueadas-Bloqueadas-edit-${task.id}" disabled>
                                                                     <label class="form-check-label " for="flexRadioDefault2">
                                                                         Bloqueadas
                                                                     </label>

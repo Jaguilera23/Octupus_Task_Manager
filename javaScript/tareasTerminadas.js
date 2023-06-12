@@ -16,6 +16,15 @@ const editarTareaTerminadas = (id) => {
     let endDateEditTerminadas = new Date(document.getElementById(`datepicker-end-Terminadas-edit-${id}`).value).toLocaleDateString();
     let descriptionEditTerminadas = document.getElementById(`floatingTextarea2-Terminadas-edit-${id}`).value;
     
+    //checkbox status
+        let enCursoTerminadasEditCheckbox = document.getElementById(`enCurso-Terminadas-edit-${id}`);
+        let bloqueadasTerminadasEditCheckbox = document.getElementById(`bloqueadas-Terminadas-edit-${id}`);
+        let porAsignarTerminadasEditCheckbox = document.getElementById(`porAsignar-Terminadas-edit-${id}`);
+
+        enCursoTerminadasEditCheckbox.addEventListener('change', statusFunctionEnCurso);
+        bloqueadasTerminadasEditCheckbox.addEventListener('change', statusFunctionBloqueadas);
+        porAsignarTerminadasEditCheckbox.addEventListener('change', statusFunctionPorAsignar);
+
     const tareaEncontradaTerminadas = tareasTerminadas.find(tarea => tarea.id === id );
 
     if (tareaEncontradaTerminadas){
@@ -36,10 +45,47 @@ const editarTareaTerminadas = (id) => {
         tareaEncontradaTerminadas.id = originalIdTerminadas;
     }
 
-    localStorage.setItem('tareasTerminadas', JSON.stringify(tareasTerminadas));
+    if (enCursoTerminadasEditCheckbox.checked){
+        const index = tareasTerminadas.findIndex(tarea => tarea.id === id);
+        const originalIdTerminadas = tareasTerminadas[index].id;
+        if(index != -1){    
+            tareasTerminadas.splice(index,1);
+        }
+        tareaEncontradaTerminadas.id = originalIdTerminadas;
+        tareasEnCurso.push(tareaEncontradaTerminadas);  
+        localStorage.setItem('tareasEnCurso', JSON.stringify(tareasEnCurso));
+        crearAcordeonTareaEnCurso(tareasEnCurso);
+    }
+
+    
+
+    if (bloqueadasTerminadasEditCheckbox.checked){
+        const index = tareasTerminadas.findIndex(tarea => tarea.id === id);
+        const originalIdTerminadas = tareasTerminadas[index].id;
+        if(index != -1){    
+            tareasTerminadas.splice(index,1);
+        }
+        tareaEncontradaTerminadas.id = originalIdTerminadas;
+        tareasBloqueadas.push(tareaEncontradaTerminadas);  
+        localStorage.setItem('tareasBloqueadas', JSON.stringify(tareasBloqueadas));
+        crearAcordeonTareaBloqueadas(tareasBloqueadas);
+    }
+
+    if (porAsignarTerminadasEditCheckbox.checked){
+        const index = tareasTerminadas.findIndex(tarea => tarea.id === id);
+        const originalIdTerminadas = tareasTerminadas[index].id;
+        if(index != -1){
+            tareasTerminadas.splice(index,1);
+        }
+        tareaEncontradaTerminadas.id = originalIdTerminadas;
+        tareas.push(tareaEncontradaTerminadas);
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+        crearAcordeonTarea(tareas);
+    }
+
+
+    localStorage.setItem('tareasTerminadas', JSON.stringify(tareasTerminadas)); 
     crearAcordeonTareaTerminadas(tareasTerminadas);
-
-
 }
 
 //Funcion borrar tarea Terminadas
@@ -164,13 +210,13 @@ const crearAcordeonTareaTerminadas = (tareasTerminadas) => {
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="Terminadas-Terminadas-edit-${task.id}" >
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso-Terminadas-edit-${task.id}" >
                                                                     <label class="form-check-label " for="flexRadioDefault1">
                                                                         En curso
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check terminadas d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas-Terminadas-edit-${task.id}">
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="terminadas-Terminadas-edit-${task.id}" disabled>
                                                                     <label class="form-check-label " for="flexRadioDefault2">
                                                                         Terminadas
                                                                     </label>

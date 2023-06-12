@@ -16,6 +16,18 @@ const editarTareaEnCurso = (id) => {
     let startDateEditEnCurso = new Date(document.getElementById(`datepicker-start-enCurso-edit-${id}`).value).toLocaleDateString();
     let endDateEditEnCurso = new Date(document.getElementById(`datepicker-end-enCurso-edit-${id}`).value).toLocaleDateString();
     let descriptionEditEnCurso = document.getElementById(`floatingTextarea2-enCurso-edit-${id}`).value;
+
+    //Checkbox status
+
+    let terminadasEnCursoEditCheckbox = document.getElementById(`terminadas-enCurso-edit-${id}`);
+    let bloqueadasEnCursoEditCheckbox = document.getElementById(`bloqueadas-enCurso-edit-${id}`);
+    let porAsignarEnCursoEditCheckbox = document.getElementById(`porAsignar-enCurso-edit-${id}`);
+
+
+    terminadasEnCursoEditCheckbox.addEventListener('change', statusFunctionTerminadas);
+    bloqueadasEnCursoEditCheckbox.addEventListener('change', statusFunctionBloqueadas);
+    porAsignarEnCursoEditCheckbox.addEventListener('change', statusFunctionPorAsignar);
+
     
     const tareaEncontradaEnCurso = tareasEnCurso.find(tarea => tarea.id === id );
 
@@ -36,6 +48,42 @@ const editarTareaEnCurso = (id) => {
         }
         tareaEncontradaEnCurso.id = originalIdEnCurso;
     }
+
+    if (terminadasEnCursoEditCheckbox.checked) {
+        const index = tareasEnCurso.findIndex(tarea => tarea.id === id);
+        const originalIdEnCurso = tareaEncontradaEnCurso.id;
+        if (index != -1) {
+            tareasEnCurso.splice(index, 1);
+        }
+        tareaEncontradaEnCurso.id = originalIdEnCurso;
+        tareasTerminadas.push(tareaEncontradaEnCurso);
+        localStorage.setItem('tareasTerminadas', JSON.stringify(tareasTerminadas));
+        crearAcordeonTareaTerminadas(tareasTerminadas);
+    }
+    if (bloqueadasEnCursoEditCheckbox.checked) {
+        const index = tareasEnCurso.findIndex(tarea => tarea.id === id);
+        const originalIdEnCurso = tareaEncontradaEnCurso.id;
+        if (index != -1) {
+            tareasEnCurso.splice(index, 1);
+        }
+        tareaEncontradaEnCurso.id = originalIdEnCurso;
+        tareasBloqueadas.push(tareaEncontradaEnCurso);
+        localStorage.setItem('tareasBloqueadas', JSON.stringify(tareasBloqueadas));
+        crearAcordeonTareaBloqueadas(tareasBloqueadas);
+    }
+    if (porAsignarEnCursoEditCheckbox.checked) {
+        const index = tareasEnCurso.findIndex(tarea => tarea.id === id);
+        const originalIdEnCurso = tareaEncontradaEnCurso.id;
+        if (index != -1) {
+            tareasEnCurso.splice(index, 1);
+        }
+        tareaEncontradaEnCurso.id = originalIdEnCurso;
+        tareas.push(tareaEncontradaEnCurso);
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+        crearAcordeonTarea(tareas);
+    }
+
+
 
     localStorage.setItem('tareasEnCurso', JSON.stringify(tareasEnCurso));
     crearAcordeonTareaEnCurso(tareasEnCurso);
@@ -163,7 +211,7 @@ const crearAcordeonTareaEnCurso = (tareasEnCurso) => {
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check en-curso d-flex justify-content-start  ps-0 mb-2">
-                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso-enCurso-edit-${task.id}" >
+                                                                    <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="enCurso-enCurso-edit-${task.id}" disabled>
                                                                     <label class="form-check-label " for="flexRadioDefault1">
                                                                         En curso
                                                                     </label>

@@ -95,7 +95,7 @@ const crearAcordeonTarea = (tareas) =>{
                                                                 </div>
                                                                 <div class="row ">
                                                                     <div class="form-check porAsignar d-flex justify-content-start  ps-0 mb-2">
-                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar-edit-${task.id}" >
+                                                                        <input class="form-check-input margin me-2 ms-1" type="radio" name="status" id="porAsignar-edit-${task.id}" disabled>
                                                                         <label class="form-check-label " for="flexRadioDefault1">
                                                                             Por asignar
                                                                         </label>
@@ -169,6 +169,8 @@ const crearAcordeonTarea = (tareas) =>{
             buttonDelete.addEventListener('click', ()=>{eliminar(task.id)})
         }
     
+
+
     
     })
 }
@@ -176,7 +178,6 @@ const crearAcordeonTarea = (tareas) =>{
 //Se llama a la funcion crearAcordeonTarea de manera global para que se renderice constantemente
 
 crearAcordeonTarea(tareas);
-
 
 
 //Funcion que utiliza find para ubicar la tarea por asignar a editar 
@@ -187,6 +188,16 @@ const editarTarea = (id) => {
     let startDateEdit = new Date(document.getElementById(`datepicker-start-edit-${id}`).value).toLocaleDateString();
     let endDateEdit = new Date(document.getElementById(`datepicker-end-edit-${id}`).value).toLocaleDateString();
     let descriptionEdit = document.getElementById(`floatingTextarea2-edit-${id}`).value;
+
+    //Checkbox status
+    let enCursoEditCheckbox = document.getElementById(`enCurso-edit-${id}`);
+    let terminadasEditCheckbox = document.getElementById(`terminadas-edit-${id}`);
+    let bloqueadasEditCheckbox = document.getElementById(`bloqueadas-edit-${id}`);
+    let porAsignarEditCheckbox = document.getElementById(`porAsignar-edit-${id}`);
+
+    enCursoEditCheckbox.addEventListener('change', statusFunctionEnCurso);
+    terminadasEditCheckbox.addEventListener('change', statusFunctionTerminadas);
+    bloqueadasEditCheckbox.addEventListener('change', statusFunctionBloqueadas);
     
     const tareaEncontrada = tareas.find(tarea => tarea.id === id );
 
@@ -208,6 +219,41 @@ const editarTarea = (id) => {
 
         tareaEncontrada.id = originalId; // Asignar el ID original a la tarea editada
     }
+
+    if (enCursoEditCheckbox.checked) {
+        const index = tareas.findIndex(tarea => tarea.id === id);
+        const originalId = tareaEncontrada.id;
+        if (index != -1) {
+            tareas.splice(index, 1);
+        }
+        tareaEncontrada.id = originalId;
+        tareasEnCurso.push(tareaEncontrada);
+        localStorage.setItem('tareasEnCurso', JSON.stringify(tareasEnCurso));
+        crearAcordeonTareaEnCurso(tareasEnCurso);
+    } 
+    if (terminadasEditCheckbox.checked) {
+        const index = tareas.findIndex(tarea => tarea.id === id);
+        const originalId = tareaEncontrada.id;
+        if (index != -1) {
+            tareas.splice(index, 1);
+        }
+        tareaEncontrada.id = originalId;
+        tareasTerminadas.push(tareaEncontrada);
+        localStorage.setItem('tareasTerminadas', JSON.stringify(tareasTerminadas));
+        crearAcordeonTareaTerminadas(tareasTerminadas);
+    }
+    if (bloqueadasEditCheckbox.checked) {
+        const index = tareas.findIndex(tarea => tarea.id === id);
+        const originalId = tareaEncontrada.id;
+        if (index != -1) {
+            tareas.splice(index, 1);
+        }
+        tareaEncontrada.id = originalId;
+        tareasBloqueadas.push(tareaEncontrada);
+        localStorage.setItem('tareasBloqueadas', JSON.stringify(tareasBloqueadas));
+        crearAcordeonTareaBloqueadas(tareasBloqueadas);
+    }
+
 
     localStorage.setItem('tareas', JSON.stringify(tareas));
     crearAcordeonTarea(tareas);
@@ -232,3 +278,11 @@ const eliminar = (id) => {
     crearAcordeonTarea(tareas);
 
 }
+
+// Funcion para crear status de tareas por Asignar
+
+const statusFunctionPorAsignar = function() {
+    if (this.checked) {
+        crearAcordeonTarea(tareas); 
+    }
+};

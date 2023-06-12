@@ -21,8 +21,8 @@ const taskCreator = () => {
 
     let noTask = document.getElementById('no-task');
     let taskName = document.getElementById('title-task').value;
-    let startDate = new Date(document.getElementById('datepicker-start').value).toLocaleDateString();
-    let endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString();
+    let startDate = new Date(document.getElementById('datepicker-start').value).toLocaleDateString('es-ES');
+    let endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString('es-ES');
     let description = document.getElementById('floatingTextarea2').value;
 
 
@@ -55,12 +55,6 @@ const taskCreator = () => {
             crearAcordeonTarea(tareas);
         }
 
-        // Se verifica con un condicional que el contenedor que tiene notask no sea nulo o undefined y si es asi se le asigna la propiedad display none
-        if (tareas.length > 0) {
-            noTask.style.display = 'none';
-        } else {
-            noTask.style.display = 'block';
-        }
         
     }else{
         Swal.fire({
