@@ -191,9 +191,6 @@ const crearAcordeonTareaBloqueadas = (tareasBloqueadas) => {
                                                         </div>
                                                         <div class="col-3 side-menu ">
                                                             <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-around" id="responsables-Bloqueadas-edit-${task.id}"><img src="../assets/logos/respomsables.svg" alt="" class=""> Responsables</button>
-                                                            </div>
-                                                            <div class="row">
                                                                 <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="etiquetas-Bloqueadas-edit-${task.id}"><img src="../assets/logos/etiquetas.svg" alt="" class="ms-2 me-3"> Etiquetas</button>
                                                             </div>
                                                             <div class="row">

@@ -11,12 +11,13 @@ let contenedorEnCurso = document.getElementById('contenedor-en-curso')
 //Funcion que utiliza find para ubicar la tarea en curso a editar 
 
 const editarTareaEnCurso = (id) => {
+    
 
     let taskNameEditEnCurso = document.getElementById(`title-task-enCurso-edit-${id}`).value;
     let startDateEditEnCurso = new Date(document.getElementById(`datepicker-start-enCurso-edit-${id}`).value).toLocaleDateString();
     let endDateEditEnCurso = new Date(document.getElementById(`datepicker-end-enCurso-edit-${id}`).value).toLocaleDateString();
     let descriptionEditEnCurso = document.getElementById(`floatingTextarea2-enCurso-edit-${id}`).value;
-    fetchResponsables();
+    
 
     //Checkbox status
 
@@ -88,7 +89,7 @@ const editarTareaEnCurso = (id) => {
 
     localStorage.setItem('tareasEnCurso', JSON.stringify(tareasEnCurso));
     crearAcordeonTareaEnCurso(tareasEnCurso);
-
+    
 
 }
 
@@ -123,7 +124,7 @@ const statusFunctionEnCurso = function() {
 //Acordeon tareas en curso 
 
 const crearAcordeonTareaEnCurso = (tareasEnCurso) => {
-    contenedorEnCurso.innerHTML = ""
+    contenedorEnCurso.innerHTML = "";
     tareasEnCurso.forEach((task) => {
     let collapseId = `collapse-${task.id}`
     let div = document.createElement('div');
@@ -186,9 +187,6 @@ const crearAcordeonTareaEnCurso = (tareasEnCurso) => {
                                                             </div>
                                                         </div>
                                                         <div class="col-3 side-menu ">
-                                                            <div class="row">
-                                                                <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-around" id="responsables-enCurso-edit-${task.id}"><img src="../assets/logos/respomsables.svg" alt="" class=""> Responsables</button>
-                                                            </div>
                                                             <div class="row">
                                                                 <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="etiquetas-enCurso-edit-${task.id}"><img src="../assets/logos/etiquetas.svg" alt="" class="ms-2 me-3"> Etiquetas</button>
                                                             </div>
@@ -273,18 +271,16 @@ const crearAcordeonTareaEnCurso = (tareasEnCurso) => {
 
 
     let buttonEditEnCurso = document.getElementById(`edit-enCurso-${task.id}`);
-    if (buttonEditEnCurso) {
-        buttonEditEnCurso.addEventListener('click', () => {
-            editarTareaEnCurso(task.id);
-        });
-    }
-    
+
+    buttonEditEnCurso.addEventListener('click', () => {
+        editarTareaEnCurso(task.id);
+    });
 
     let buttonDelete = document.getElementById(`delete-enCurso-edit-${task.id}`)
     
-    if(buttonDelete){
-        buttonDelete.addEventListener('click', ()=>{eliminarEnCurso(task.id)})
-    }
+
+    buttonDelete.addEventListener('click', ()=>{eliminarEnCurso(task.id)})
+
 
 
 })
@@ -296,3 +292,6 @@ crearAcordeonTareaEnCurso(tareasEnCurso);
 let enCursoCheckbox = document.getElementById('enCurso');
 
 enCursoCheckbox.addEventListener('change', statusFunctionEnCurso);
+
+
+

@@ -1,3 +1,5 @@
+
+
 //Clase para crear el objeto de cada tarea 
 class Task{
     constructor(taskName, startDate, endDate, description){
@@ -31,7 +33,7 @@ const taskCreator = () => {
         task.id = id;
         id++;
         
-        localStorage.setItem('tareas', JSON.stringify(tareas))
+        
         document.getElementById('title-task').value='';
         document.getElementById('datepicker-start').value='';
         document.getElementById('datepicker-end').value='';
@@ -54,8 +56,8 @@ const taskCreator = () => {
             tareas.push(task);
             crearAcordeonTarea(tareas);
         }
-
         
+        localStorage.setItem('tareas', JSON.stringify(tareas))
     }else{
         Swal.fire({
             title:'Debe rellenar los campos para crear una tarea',
@@ -86,9 +88,9 @@ let listadoResponsables = document.getElementById('lista');
 let contador = 1;
 let responsableSeleccionado = null;
 
-const fetchResponsables = async () => {
-    const response = await fetch("../javaScript/responsables.json");
-    const data = await response.json();
+    const fetchResponsables = async () => {
+        const response = await fetch("../javaScript/responsables.json");
+        const data = await response.json();
 
     data.forEach(responsables => {       
         const btn= document.createElement('button');
@@ -109,6 +111,7 @@ const fetchResponsables = async () => {
         
         contador ++;    
     });
+
 }
 
 fetchResponsables();

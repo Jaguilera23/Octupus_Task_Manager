@@ -76,9 +76,6 @@ const crearAcordeonTarea = (tareas) =>{
                                                             </div>
                                                             <div class="col-3 side-menu ">
                                                                 <div class="row">
-                                                                    <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-around" id="responsables-edit-${task.id}"><img src="../assets/logos/respomsables.svg" alt="" class=""> Responsables</button>
-                                                                </div>
-                                                                <div class="row">
                                                                     <button class="btn btn-modal-side mb-2 ps-0 d-flex justify-content-start" id="etiquetas-edit-${task.id}"><img src="../assets/logos/etiquetas.svg" alt="" class="ms-2 me-3"> Etiquetas</button>
                                                                 </div>
                                                                 <div class="row">
@@ -183,24 +180,13 @@ const crearAcordeonTarea = (tareas) =>{
 crearAcordeonTarea(tareas);
 
 
-//Funcion que utiliza find para ubicar la tarea por asignar a editar 
-
 const editarTarea = (id) => {
 
     let taskNameEdit = document.getElementById(`title-task-edit-${id}`).value;
     let startDateEdit = new Date(document.getElementById(`datepicker-start-edit-${id}`).value).toLocaleDateString();
     let endDateEdit = new Date(document.getElementById(`datepicker-end-edit-${id}`).value).toLocaleDateString();
     let descriptionEdit = document.getElementById(`floatingTextarea2-edit-${id}`).value;
-
-    //Checkbox status
-    let enCursoEditCheckbox = document.getElementById(`enCurso-edit-${id}`);
-    let terminadasEditCheckbox = document.getElementById(`terminadas-edit-${id}`);
-    let bloqueadasEditCheckbox = document.getElementById(`bloqueadas-edit-${id}`);
-    let porAsignarEditCheckbox = document.getElementById(`porAsignar-edit-${id}`);
-
-    enCursoEditCheckbox.addEventListener('change', statusFunctionEnCurso);
-    terminadasEditCheckbox.addEventListener('change', statusFunctionTerminadas);
-    bloqueadasEditCheckbox.addEventListener('change', statusFunctionBloqueadas);
+ 
     
     const tareaEncontrada = tareas.find(tarea => tarea.id === id );
 
@@ -222,6 +208,16 @@ const editarTarea = (id) => {
 
         tareaEncontrada.id = originalId; // Asignar el ID original a la tarea editada
     }
+
+    //Checkbox status
+    let enCursoEditCheckbox = document.getElementById(`enCurso-edit-${id}`);
+    let terminadasEditCheckbox = document.getElementById(`terminadas-edit-${id}`);
+    let bloqueadasEditCheckbox = document.getElementById(`bloqueadas-edit-${id}`);
+    
+
+    enCursoEditCheckbox.addEventListener('change', statusFunctionEnCurso);
+    terminadasEditCheckbox.addEventListener('change', statusFunctionTerminadas);
+    bloqueadasEditCheckbox.addEventListener('change', statusFunctionBloqueadas);
 
     if (enCursoEditCheckbox.checked) {
         const index = tareas.findIndex(tarea => tarea.id === id);
@@ -260,7 +256,6 @@ const editarTarea = (id) => {
 
     localStorage.setItem('tareas', JSON.stringify(tareas));
     crearAcordeonTarea(tareas);
-
 
 }
 
