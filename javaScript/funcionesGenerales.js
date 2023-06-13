@@ -5,7 +5,7 @@ class Task{
         this.startDate = startDate;
         this.endDate = endDate;
         this.description = description;
-        // this.taskOwner = .taskOwner; 
+        this.taskOwner = []; 
         // this.status = document.getElementById().value;
     }
 }
@@ -19,15 +19,15 @@ let id = 1;
 
 const taskCreator = () => {
 
-    let noTask = document.getElementById('no-task');
     let taskName = document.getElementById('title-task').value;
     let startDate = new Date(document.getElementById('datepicker-start').value).toLocaleDateString('es-ES');
     let endDate = new Date(document.getElementById('datepicker-end').value).toLocaleDateString('es-ES');
     let description = document.getElementById('floatingTextarea2').value;
-
+    let taskOwner = responsableSeleccionado ? [responsableSeleccionado.nombre] : [];
 
     if (taskName !== '' && description !== ''){
         let task = new Task (taskName,startDate,endDate,description);
+        task.taskOwner = taskOwner;
         task.id = id;
         id++;
         
@@ -77,11 +77,43 @@ const taskCreator = () => {
 }
 
 
-
-
-
-
 let buttonSave = document.getElementById('guardar');
+
+
+//Fetch responsables
+
+let listadoResponsables = document.getElementById('lista');
+let contador = 1;
+let responsableSeleccionado = null;
+
+const fetchResponsables = async () => {
+    const response = await fetch("../javaScript/responsables.json");
+    const data = await response.json();
+
+    data.forEach(responsables => {       
+        const btn= document.createElement('button');
+        
+        btn.classList.add('dropdown-item');
+        btn.classList.add('btn-responsable');
+        btn.innerHTML = `${responsables.nombre}`;
+        btn.id = `responsable-${contador}`;
+        
+        listadoResponsables.append(btn); 
+
+        btn.addEventListener('click', () => {
+
+            responsableSeleccionado = responsables; // Almacenar el responsable seleccionado
+        });
+        
+
+        
+        contador ++;    
+    });
+}
+
+fetchResponsables();
+
+
 
 buttonSave.addEventListener('click', taskCreator);
 
@@ -100,22 +132,3 @@ buttonSave.addEventListener('click', taskCreator);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* nota: 
-1. Debo crear un evento para el boton editar para cuando se seleccione en curso elimine la tarea del array tareas y haga push en el array en curso.
-2. Crear un condicional en el modal de editar, donde si los input estan vacios al darle editar se mantenga sus valores anteriores y no se cambien por vacios, este condicional es
-    para evitar que si la edicion es solo del status se borren los datos de la tarea.    
-3. Revisar por que al editar una tarea la proxima repite el mismo id     
-    */

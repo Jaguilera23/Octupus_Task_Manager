@@ -241,6 +241,9 @@ const crearAcordeonTareaTerminadas = (tareasTerminadas) => {
                                 </div>
                             </div>
                             <h5 class="mt-3 n-tarea-card">${task.description}</h5>
+                            <div>
+                                <p class ="owner"><strong>Owner:</strong> ${task.taskOwner}</p>
+                            </div>
                             <div class="d-flex flex-row  justify-content-start">
                                 <img src="../assets/logos/create-date.svg" alt="" class="me-2">
                                 <div class="d-flex flex-row align-items-center mt-3">

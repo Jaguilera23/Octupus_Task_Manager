@@ -1,0 +1,9 @@
+[
+    {"id":1, "nombre":"Jose Rodriguez", "email":"jose@gmail.com", "edad": 20},
+    {"id":2, "nombre":"Maria Perez", "email":"maria@gmail.com", "edad": 30},
+    {"id":3, "nombre":"Pedro Leon", "email":"pedro@gmail.com", "edad": 40},
+    {"id":4, "nombre":"Luis Martinez", "email":"luis@gmail.com", "edad": 50},
+    {"id":5, "nombre":"Emilio Aponte", "email":"emilio@gmail.com", "edad": 35},
+    {"id":6, "nombre":"Carlos Perez", "email":"carlos@gmail.com", "edad": 25}
+    
+]

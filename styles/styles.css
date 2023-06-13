@@ -685,4 +685,24 @@ li {
   font-size: 0.9211px;
   line-height: 13px;
   text-align: center;
+}
+
+.dropdown-toggle.modal-drop::after {
+  display: none;
+}
+
+.btn-responsable {
+  font-family: "Inter";
+  font-size: 12px;
+  color: #646464;
+}
+
+.dropdown-menu {
+  background: #F9F9F9;
+}
+
+.owner {
+  font-family: "Inter";
+  font-size: 14px;
+  color: #646464;
 }/*# sourceMappingURL=styles.css.map */
