@@ -89,11 +89,12 @@ let contador = 1;
 let responsableSeleccionado = null;
 
     const fetchResponsables = async () => {
+    try{
         const response = await fetch("../javaScript/responsables.json");
         const data = await response.json();
 
-    data.forEach(responsables => {       
-        const btn= document.createElement('button');
+        data.forEach(responsables => {       
+            const btn= document.createElement('button');
         
         btn.classList.add('dropdown-item');
         btn.classList.add('btn-responsable');
@@ -111,7 +112,9 @@ let responsableSeleccionado = null;
         
         contador ++;    
     });
-
+    }catch(error){
+        console.error('Ocurrio un error:',error);
+        }
 }
 
 fetchResponsables();
